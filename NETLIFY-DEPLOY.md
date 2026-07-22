@@ -14,9 +14,12 @@ This repository ships as a no-build static owner portal. The home page is both a
 ## What the owner portal includes
 
 - **Business case:** executive summary, owner Q&A, evidence, cost scenarios, and the six-week rollout.
+- **Pilot offer:** a low-risk, two-week Automation Pilot, a Phase 2 expansion offer, optional optimization support, explicit scope boundaries, and owner-approval safeguards.
 - **Four workspace layers:** AH Brain knowledge base, channel intelligence, autopilot workflow plan, and owner portal.
 - **Source proof:** shortcut cards plus a searchable and filterable file explorer powered by `site-manifest.json`.
 - **Browser review:** markdown renders in the built-in reader (with a raw mode); HTML and PDFs can be previewed, opened, or downloaded.
+
+The pilot CTA is intentionally a recipient-free `mailto:` inquiry placeholder because this repository does not contain a project contact email. Add the intended recipient to that link in `index.html` before sharing the public portal if a direct email destination is available.
 
 ## Deployment contents
 
