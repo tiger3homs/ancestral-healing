@@ -1,9 +1,9 @@
 {
   "name": "Ancestral Healing Owner Portal",
-  "generatedAt": "2026-07-22T22:38:01.999696+00:00",
+  "generatedAt": "2026-07-22T22:57:19.884478+00:00",
   "totals": {
     "files": 69,
-    "bytes": 19586668,
+    "bytes": 19594596,
     "markdown": 50,
     "html": 6,
     "pdf": 6,
@@ -18,46 +18,6 @@
       "extension": "",
       "kind": "config",
       "size": 66
-    },
-    {
-      "path": "CONTENT-INDEX.md",
-      "name": "CONTENT-INDEX.md",
-      "directory": "",
-      "extension": ".md",
-      "kind": "markdown",
-      "size": 6177,
-      "mime": "text/markdown",
-      "title": "Content Index"
-    },
-    {
-      "path": "EDITORIAL-GUIDELINES.md",
-      "name": "EDITORIAL-GUIDELINES.md",
-      "directory": "",
-      "extension": ".md",
-      "kind": "markdown",
-      "size": 6727,
-      "mime": "text/markdown",
-      "title": "Editorial Guidelines"
-    },
-    {
-      "path": "NETLIFY-DEPLOY.md",
-      "name": "NETLIFY-DEPLOY.md",
-      "directory": "",
-      "extension": ".md",
-      "kind": "markdown",
-      "size": 877,
-      "mime": "text/markdown",
-      "title": "Netlify Drag-and-Drop Deploy"
-    },
-    {
-      "path": "README.md",
-      "name": "README.md",
-      "directory": "",
-      "extension": ".md",
-      "kind": "markdown",
-      "size": 5242,
-      "mime": "text/markdown",
-      "title": "AH Brain — Ancestral Healing Knowledge Base"
     },
     {
       "path": "ah-analytics/03-strategic-recommendations.md",
@@ -77,17 +37,7 @@
       "kind": "markdown",
       "size": 5811,
       "mime": "text/markdown",
-      "title": "AH Brain ↔ Channel Demand Crosswalk"
-    },
-    {
-      "path": "ah-analytics/README.md",
-      "name": "README.md",
-      "directory": "ah-analytics",
-      "extension": ".md",
-      "kind": "markdown",
-      "size": 3981,
-      "mime": "text/markdown",
-      "title": "Ancestral Healing — Channel Analytics"
+      "title": "AH Brain \u2194 Channel Demand Crosswalk"
     },
     {
       "path": "ah-analytics/ah-analytics/01-performance-breakdown.md",
@@ -127,17 +77,7 @@
       "kind": "markdown",
       "size": 5811,
       "mime": "text/markdown",
-      "title": "AH Brain ↔ Channel Demand Crosswalk"
-    },
-    {
-      "path": "ah-analytics/ah-analytics/README.md",
-      "name": "README.md",
-      "directory": "ah-analytics/ah-analytics",
-      "extension": ".md",
-      "kind": "markdown",
-      "size": 3981,
-      "mime": "text/markdown",
-      "title": "Ancestral Healing — Channel Analytics"
+      "title": "AH Brain \u2194 Channel Demand Crosswalk"
     },
     {
       "path": "ah-analytics/ah-analytics/data/analysis.json",
@@ -145,8 +85,7 @@
       "directory": "ah-analytics/ah-analytics/data",
       "extension": ".json",
       "kind": "json",
-      "size": 15791,
-      "mime": "application/json"
+      "size": 15791
     },
     {
       "path": "ah-analytics/ah-analytics/data/shorts.json",
@@ -154,8 +93,7 @@
       "directory": "ah-analytics/ah-analytics/data",
       "extension": ".json",
       "kind": "json",
-      "size": 6496,
-      "mime": "application/json"
+      "size": 6496
     },
     {
       "path": "ah-analytics/ah-analytics/data/videos.json",
@@ -163,8 +101,7 @@
       "directory": "ah-analytics/ah-analytics/data",
       "extension": ".json",
       "kind": "json",
-      "size": 22134,
-      "mime": "application/json"
+      "size": 22134
     },
     {
       "path": "ah-analytics/ah-analytics/index.html",
@@ -174,7 +111,17 @@
       "kind": "html",
       "size": 20719,
       "mime": "text/html",
-      "title": "Ancestral Healing — Channel Analytics"
+      "title": "Index"
+    },
+    {
+      "path": "ah-analytics/ah-analytics/README.md",
+      "name": "README.md",
+      "directory": "ah-analytics/ah-analytics",
+      "extension": ".md",
+      "kind": "markdown",
+      "size": 3981,
+      "mime": "text/markdown",
+      "title": "Ancestral Healing \u2014 Channel Analytics"
     },
     {
       "path": "ah-analytics/index.html",
@@ -184,7 +131,17 @@
       "kind": "html",
       "size": 20719,
       "mime": "text/html",
-      "title": "Ancestral Healing — Channel Analytics"
+      "title": "Index"
+    },
+    {
+      "path": "ah-analytics/README.md",
+      "name": "README.md",
+      "directory": "ah-analytics",
+      "extension": ".md",
+      "kind": "markdown",
+      "size": 3981,
+      "mime": "text/markdown",
+      "title": "Ancestral Healing \u2014 Channel Analytics"
     },
     {
       "path": "ah-autopilot/01-connector-stack.md",
@@ -242,8 +199,7 @@
       "directory": "ah-autopilot",
       "extension": ".zip",
       "kind": "archive",
-      "size": 28400,
-      "mime": "application/zip"
+      "size": 28400
     },
     {
       "path": "ah-autopilot/index.html",
@@ -253,7 +209,7 @@
       "kind": "html",
       "size": 22539,
       "mime": "text/html",
-      "title": "AH Autopilot — Build Plan"
+      "title": "Index"
     },
     {
       "path": "ah-brain/.gitignore",
@@ -271,10 +227,7 @@
       "kind": "markdown",
       "size": 11528,
       "mime": "text/markdown",
-      "title": "Ancestral Approach to Appendicitis",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/Ancestral Approach to Appendicitis.docx"
+      "title": "Ancestral Approach To Appendicitis"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/ancestral-nutrition-for-lasting-health-and-wellbeing.md",
@@ -284,10 +237,7 @@
       "kind": "markdown",
       "size": 3154,
       "mime": "text/markdown",
-      "title": "Ancestral Nutrition for Lasting Health and Wellbeing",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/Ancestral Nutrition for Lasting Health and Wellbeing.docx"
+      "title": "Ancestral Nutrition for Lasting Health and Wellbeing"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/ancestral-tips-to-wake-up-earlier-short.md",
@@ -297,10 +247,7 @@
       "kind": "markdown",
       "size": 810,
       "mime": "text/markdown",
-      "title": "Ancestral Tips to Wake up Earlier Short",
-      "pillar": "Ancestral Nutrition",
-      "docType": "protocol",
-      "sourceFile": "Ancestral Nutrition/Ancestral Tips to Wake up Earlier Short.docx"
+      "title": "Ancestral Tips to Wake up Earlier Short"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/animal-based-food-list.md",
@@ -310,10 +257,7 @@
       "kind": "markdown",
       "size": 1685,
       "mime": "text/markdown",
-      "title": "Animal-Based Food List",
-      "pillar": "Ancestral Nutrition",
-      "docType": "guide",
-      "sourceFile": "Ancestral Nutrition/Animal Based Food List.pdf"
+      "title": "Animal-Based Food List"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/anti-nutrient-groups-and-foods-to-avoid.md",
@@ -323,10 +267,7 @@
       "kind": "markdown",
       "size": 3717,
       "mime": "text/markdown",
-      "title": "ANTI NUTRIENT GROUPS AND FOODS TO AVOID",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/ANTI NUTRIENT GROUPS AND FOODS TO AVOID.docx"
+      "title": "ANTI NUTRIENT GROUPS AND FOODS TO AVOID"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/benefits-grass-fed-and-finished-beef.md",
@@ -336,10 +277,7 @@
       "kind": "markdown",
       "size": 3539,
       "mime": "text/markdown",
-      "title": "Benefits Grass-fed and Finished Beef",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/Benefits Grass-fed and Finished Beef.docx"
+      "title": "Benefits Grass-fed and Finished Beef"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/benefits-of-organs-video-script.md",
@@ -349,10 +287,7 @@
       "kind": "markdown",
       "size": 7818,
       "mime": "text/markdown",
-      "title": "Benefits of Organs Video Script",
-      "pillar": "Ancestral Nutrition",
-      "docType": "video-script",
-      "sourceFile": "Ancestral Nutrition/Benefits of Organs Video Script.docx"
+      "title": "Benefits of Organs Video Script"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/benefits-of-raw-milk.md",
@@ -362,10 +297,7 @@
       "kind": "markdown",
       "size": 7679,
       "mime": "text/markdown",
-      "title": "Benefits of RAW MILK",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/Benefits of RAW MILK.docx"
+      "title": "Benefits of RAW MILK"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/carnivore-guide-book-reference.md",
@@ -375,10 +307,7 @@
       "kind": "markdown",
       "size": 1474,
       "mime": "text/markdown",
-      "title": "The Ultimate 30-Day Guide to Going Full Carnivore (Kevin Stock) — reference note",
-      "pillar": "Ancestral Nutrition",
-      "docType": "book-reference",
-      "sourceFile": "Ancestral Nutrition/Carnivore Guide Kevin Stock.pdf"
+      "title": "Carnivore Guide (Kevin Stock) \u2014 reference note"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/gum-health-in-relation-to-disease.md",
@@ -388,10 +317,7 @@
       "kind": "markdown",
       "size": 2621,
       "mime": "text/markdown",
-      "title": "Gum Health in relation to Disease",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/Gum Health in relation to Disease.docx"
+      "title": "Gum Health in relation to Disease"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/how-to-avoid-vegetable-oils.md",
@@ -401,10 +327,7 @@
       "kind": "markdown",
       "size": 3940,
       "mime": "text/markdown",
-      "title": "How to Avoid Vegetable Oils",
-      "pillar": "Ancestral Nutrition",
-      "docType": "guide",
-      "sourceFile": "Ancestral Nutrition/How to avoid Vegetable Oils.pdf"
+      "title": "How to Avoid Vegetable Oils"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/primal-nutrition-book-reference.md",
@@ -414,10 +337,7 @@
       "kind": "markdown",
       "size": 1555,
       "mime": "text/markdown",
-      "title": "Primal Nutrition (Ron Schmid) — reference note",
-      "pillar": "Ancestral Nutrition",
-      "docType": "book-reference",
-      "sourceFile": "Ancestral Nutrition/Primal Nutrition_ Paleolithic and Ancestral Diets for Optimal Health ( PDFDrive ).pdf"
+      "title": "Primal Nutrition \u2014 reference note"
     },
     {
       "path": "ah-brain/01-ancestral-nutrition/the-power-of-regenerative-farming.md",
@@ -427,10 +347,7 @@
       "kind": "markdown",
       "size": 2977,
       "mime": "text/markdown",
-      "title": "The Power of Regenerative Farming",
-      "pillar": "Ancestral Nutrition",
-      "docType": "research-note",
-      "sourceFile": "Ancestral Nutrition/The Power of Regenerative Farming.docx"
+      "title": "The Power of Regenerative Farming"
     },
     {
       "path": "ah-brain/02-circadian-and-light/artificial-blue-light-vs-natural-sunlight.md",
@@ -440,10 +357,7 @@
       "kind": "markdown",
       "size": 66320,
       "mime": "text/markdown",
-      "title": "Artificial Blue Light vs Natural Sunlight",
-      "pillar": "Circadian & Light",
-      "docType": "research-note",
-      "sourceFile": "Circadian/Artificial Blue Light vs Natural Sunlight.docx"
+      "title": "Artificial Blue Light Vs Natural Sunlight"
     },
     {
       "path": "ah-brain/02-circadian-and-light/benefits-of-red-and-infrared-light.md",
@@ -453,10 +367,7 @@
       "kind": "markdown",
       "size": 12786,
       "mime": "text/markdown",
-      "title": "Benefits of Red and Infrared Light",
-      "pillar": "Circadian & Light",
-      "docType": "research-note",
-      "sourceFile": "Circadian/Benefits of Red and Infrared Light.docx"
+      "title": "The Ultimate Light Guide"
     },
     {
       "path": "ah-brain/02-circadian-and-light/circadian-content-ideas.md",
@@ -466,10 +377,7 @@
       "kind": "markdown",
       "size": 17925,
       "mime": "text/markdown",
-      "title": "Circadian Content Ideas",
-      "pillar": "Circadian & Light",
-      "docType": "content-ideas",
-      "sourceFile": "Circadian/Circadian Content Ideas.docx"
+      "title": "Circadian Content Ideas"
     },
     {
       "path": "ah-brain/02-circadian-and-light/circadian-daily-health-routine.md",
@@ -479,10 +387,7 @@
       "kind": "markdown",
       "size": 1704,
       "mime": "text/markdown",
-      "title": "Circadian Daily Health Routine",
-      "pillar": "Circadian & Light",
-      "docType": "protocol",
-      "sourceFile": "Circadian/Circadian Daily Health Routine.docx"
+      "title": "Circadian Daily Health Routine"
     },
     {
       "path": "ah-brain/02-circadian-and-light/impact-of-circadian-rhythms-summary.md",
@@ -492,10 +397,7 @@
       "kind": "markdown",
       "size": 1825,
       "mime": "text/markdown",
-      "title": "Impact of Circadian Rhythms on Health (bioSpectral) — summary",
-      "pillar": "Circadian & Light",
-      "docType": "reference-summary",
-      "sourceFile": "Circadian/Impact of Circadian Rythym on Health.pdf"
+      "title": "Impact of Circadian Rhythms on Health \u2014 bioSpectral (summary)"
     },
     {
       "path": "ah-brain/02-circadian-and-light/impact-of-light-on-health-summary.md",
@@ -505,10 +407,7 @@
       "kind": "markdown",
       "size": 3172,
       "mime": "text/markdown",
-      "title": "Impact of Light on Health (bioSpectral) — summary",
-      "pillar": "Circadian & Light",
-      "docType": "reference-summary",
-      "sourceFile": "Circadian/Impact of Light on Health.pdf"
+      "title": "Impact of Light on Health \u2014 bioSpectral (summary)"
     },
     {
       "path": "ah-brain/02-circadian-and-light/led-affect-on-health.md",
@@ -518,10 +417,7 @@
       "kind": "markdown",
       "size": 1790,
       "mime": "text/markdown",
-      "title": "LED Affect on Health",
-      "pillar": "Circadian & Light",
-      "docType": "research-note",
-      "sourceFile": "Circadian/LED Affect on Health.docx"
+      "title": "Led Affect On Health"
     },
     {
       "path": "ah-brain/02-circadian-and-light/light-as-medicine.md",
@@ -531,10 +427,7 @@
       "kind": "markdown",
       "size": 28862,
       "mime": "text/markdown",
-      "title": "light as medicine",
-      "pillar": "Circadian & Light",
-      "docType": "research-note",
-      "sourceFile": "Circadian/light as medicine.docx"
+      "title": "light as medicine"
     },
     {
       "path": "ah-brain/02-circadian-and-light/light-summary-john-otts-work.md",
@@ -544,10 +437,7 @@
       "kind": "markdown",
       "size": 15328,
       "mime": "text/markdown",
-      "title": "Light Summary John Otts Work",
-      "pillar": "Circadian & Light",
-      "docType": "book-summary",
-      "sourceFile": "Circadian/Light Summary John Otts Work.docx"
+      "title": "Light Summary John Otts Work"
     },
     {
       "path": "ah-brain/02-circadian-and-light/master-your-circadian.md",
@@ -557,10 +447,7 @@
       "kind": "markdown",
       "size": 1886,
       "mime": "text/markdown",
-      "title": "Master Your Circadian",
-      "pillar": "Circadian & Light",
-      "docType": "protocol",
-      "sourceFile": "Circadian/Master Your Circadian.docx"
+      "title": "Master Your Circadian"
     },
     {
       "path": "ah-brain/02-circadian-and-light/reel-ideas-for-circadian-health.md",
@@ -570,10 +457,7 @@
       "kind": "markdown",
       "size": 20389,
       "mime": "text/markdown",
-      "title": "Reel Ideas for Circadian Health",
-      "pillar": "Circadian & Light",
-      "docType": "content-ideas",
-      "sourceFile": "Circadian/Reel Ideas for Circadian Health.docx"
+      "title": "Reel Ideas for Circadian Health"
     },
     {
       "path": "ah-brain/03-non-toxic-lifestyle/microplastics-and-pfas.md",
@@ -583,10 +467,7 @@
       "kind": "markdown",
       "size": 3524,
       "mime": "text/markdown",
-      "title": "Microplastics and PFAS",
-      "pillar": "Non-Toxic Lifestyle",
-      "docType": "research-note",
-      "sourceFile": "Non Toxic Lifestyle/Microplastics and PFAS.docx"
+      "title": "Microplastics and PFAS"
     },
     {
       "path": "ah-brain/03-non-toxic-lifestyle/plastic-harmful-effects-and-content-ideas.md",
@@ -596,10 +477,7 @@
       "kind": "markdown",
       "size": 20738,
       "mime": "text/markdown",
-      "title": "Plastic Harmful Effects and Content Ideas",
-      "pillar": "Non-Toxic Lifestyle",
-      "docType": "content-ideas",
-      "sourceFile": "Non Toxic Lifestyle/Plastic Harmful Effects and Content Ideas.docx"
+      "title": "Plastic Harmful Effects and Content Ideas"
     },
     {
       "path": "ah-brain/04-content-strategy/documentary-series-ideas.md",
@@ -609,10 +487,7 @@
       "kind": "markdown",
       "size": 44271,
       "mime": "text/markdown",
-      "title": "Documentary Series Ideas",
-      "pillar": "Content Strategy",
-      "docType": "video-script",
-      "sourceFile": "Ai Content Outlines and Ideas/Documentary Series Ideas.docx"
+      "title": "Documentary Series Ideas"
     },
     {
       "path": "ah-brain/04-content-strategy/video-ideas-for-ancestral-healing.md",
@@ -622,10 +497,7 @@
       "kind": "markdown",
       "size": 1918,
       "mime": "text/markdown",
-      "title": "Video Ideas for Ancestral Healing",
-      "pillar": "Content Strategy",
-      "docType": "content-ideas",
-      "sourceFile": "Ai Content Outlines and Ideas/Video Ideas for Ancestral Healing.docx"
+      "title": "Video Ideas for Ancestral Healing"
     },
     {
       "path": "ah-brain/04-content-strategy/youtube-channels.md",
@@ -635,10 +507,7 @@
       "kind": "markdown",
       "size": 1626,
       "mime": "text/markdown",
-      "title": "Youtube Channels",
-      "pillar": "Content Strategy",
-      "docType": "channel-map",
-      "sourceFile": "Youtube Channels.docx"
+      "title": "Youtube Channels"
     },
     {
       "path": "ah-brain/CONTENT-INDEX.md",
@@ -668,7 +537,7 @@
       "kind": "markdown",
       "size": 5242,
       "mime": "text/markdown",
-      "title": "AH Brain — Ancestral Healing Knowledge Base"
+      "title": "AH Brain \u2014 Ancestral Healing Knowledge Base"
     },
     {
       "path": "ah-brain/reference/knowledge-base.html",
@@ -678,7 +547,7 @@
       "kind": "html",
       "size": 31042,
       "mime": "text/html",
-      "title": "Ancestral Healing — Knowledge Base"
+      "title": "Knowledge Base"
     },
     {
       "path": "ah-brain/source-pdfs/Animal Based Food List.pdf",
@@ -687,7 +556,8 @@
       "extension": ".pdf",
       "kind": "pdf",
       "size": 7830283,
-      "mime": "application/pdf"
+      "mime": "application/pdf",
+      "title": "Animal Based Food List"
     },
     {
       "path": "ah-brain/source-pdfs/Carnivore Guide Kevin Stock.pdf",
@@ -696,7 +566,8 @@
       "extension": ".pdf",
       "kind": "pdf",
       "size": 798134,
-      "mime": "application/pdf"
+      "mime": "application/pdf",
+      "title": "Carnivore Guide Kevin Stock"
     },
     {
       "path": "ah-brain/source-pdfs/How to avoid Vegetable Oils.pdf",
@@ -705,7 +576,8 @@
       "extension": ".pdf",
       "kind": "pdf",
       "size": 7086856,
-      "mime": "application/pdf"
+      "mime": "application/pdf",
+      "title": "How To Avoid Vegetable Oils"
     },
     {
       "path": "ah-brain/source-pdfs/Impact of Circadian Rythym on Health.pdf",
@@ -714,7 +586,8 @@
       "extension": ".pdf",
       "kind": "pdf",
       "size": 997538,
-      "mime": "application/pdf"
+      "mime": "application/pdf",
+      "title": "Impact Of Circadian Rythym On Health"
     },
     {
       "path": "ah-brain/source-pdfs/Impact of Light on Health.pdf",
@@ -723,7 +596,8 @@
       "extension": ".pdf",
       "kind": "pdf",
       "size": 116987,
-      "mime": "application/pdf"
+      "mime": "application/pdf",
+      "title": "Impact Of Light On Health"
     },
     {
       "path": "ah-brain/source-pdfs/Primal Nutrition_ Paleolithic and Ancestral Diets for Optimal Health ( PDFDrive ).pdf",
@@ -732,7 +606,8 @@
       "extension": ".pdf",
       "kind": "pdf",
       "size": 2083097,
-      "mime": "application/pdf"
+      "mime": "application/pdf",
+      "title": "Primal Nutrition  Paleolithic And Ancestral Diets For Optimal Health ( Pdfdrive )"
     },
     {
       "path": "ah-brain/source-pdfs/README.md",
@@ -752,7 +627,27 @@
       "kind": "html",
       "size": 31042,
       "mime": "text/html",
-      "title": "Ancestral Healing — Knowledge Base"
+      "title": "Ancestral Healing Kb"
+    },
+    {
+      "path": "CONTENT-INDEX.md",
+      "name": "CONTENT-INDEX.md",
+      "directory": "",
+      "extension": ".md",
+      "kind": "markdown",
+      "size": 6177,
+      "mime": "text/markdown",
+      "title": "Content Index"
+    },
+    {
+      "path": "EDITORIAL-GUIDELINES.md",
+      "name": "EDITORIAL-GUIDELINES.md",
+      "directory": "",
+      "extension": ".md",
+      "kind": "markdown",
+      "size": 6727,
+      "mime": "text/markdown",
+      "title": "Editorial Guidelines"
     },
     {
       "path": "index.html",
@@ -760,9 +655,29 @@
       "directory": "",
       "extension": ".html",
       "kind": "html",
-      "size": 40664,
+      "size": 51339,
       "mime": "text/html",
-      "title": "Ancestral Healing — Owner Portal"
+      "title": "Index"
+    },
+    {
+      "path": "NETLIFY-DEPLOY.md",
+      "name": "NETLIFY-DEPLOY.md",
+      "directory": "",
+      "extension": ".md",
+      "kind": "markdown",
+      "size": 2219,
+      "mime": "text/markdown",
+      "title": "Netlify Drag-and-Drop Deploy"
+    },
+    {
+      "path": "README.md",
+      "name": "README.md",
+      "directory": "",
+      "extension": ".md",
+      "kind": "markdown",
+      "size": 5242,
+      "mime": "text/markdown",
+      "title": "AH Brain \u2014 Ancestral Healing Knowledge Base"
     },
     {
       "path": "site-manifest.json",
@@ -770,8 +685,7 @@
       "directory": "",
       "extension": ".json",
       "kind": "json",
-      "size": 25612,
-      "mime": "application/json"
+      "size": 21523
     }
   ]
 }
