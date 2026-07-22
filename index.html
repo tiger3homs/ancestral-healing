@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Owner portal for the Ancestral Healing repository. Browse every file and read markdown documents from a Netlify static deploy.">
+<title>Ancestral Healing — Owner Portal</title>
+<style>
+:root{
+  --night:#17110d;
+  --night-2:#211913;
+  --earth:#2b2118;
+  --earth-2:#35281d;
+  --bone:#f3eadb;
+  --bone-soft:#d8ccb9;
+  --muted:#a99b86;
+  --line:rgba(243,234,219,.14);
+  --line-strong:rgba(243,234,219,.28);
+  --amber:#e9ad4a;
+  --ember:#d86a34;
+  --sage:#94a77e;
+  --sky:#7ca0b7;
+  --red:#cc624b;
+  --shadow:0 24px 70px rgba(0,0,0,.32);
+  --radius:18px;
+  --mono:"SFMono-Regular","Cascadia Code","Liberation Mono",Menlo,monospace;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 16% -10%,rgba(232,169,66,.20),transparent 34rem),
+    radial-gradient(circle at 92% 4%,rgba(124,160,183,.15),transparent 28rem),
+    linear-gradient(180deg,#17110d 0%,#1d1510 44%,#17110d 100%);
+  color:var(--bone);
+  font-family:var(--sans);
+  line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--amber);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select{font:inherit}
+button{cursor:pointer}
+::selection{background:var(--amber);color:var(--night)}
+.shell{width:min(1440px,100%);margin:0 auto;padding:0 clamp(1rem,3vw,2.2rem) 2rem}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding:clamp(2rem,5vw,4.5rem) 0 2rem}
+.hero::after{content:"";position:absolute;inset:auto -12% -56% -12%;height:420px;background:radial-gradient(ellipse at center,rgba(216,106,52,.26),rgba(216,106,52,.08) 44%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(1.5rem,4vw,3rem);align-items:end}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--amber);margin:0 0 1rem}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(2.35rem,7vw,6.25rem);line-height:.92;letter-spacing:-.055em;margin:0 0 1rem;max-width:10ch}
+h1 span{color:var(--amber);font-style:italic;font-weight:500}
+.lede{max-width:68ch;color:var(--bone-soft);font-size:clamp(1rem,1.8vw,1.18rem);margin:0}
+.hero-card{background:rgba(43,33,24,.76);border:1px solid var(--line-strong);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.1rem;backdrop-filter:blur(12px)}
+.deploy-title{display:flex;align-items:center;gap:.65rem;font-weight:750;margin:.15rem 0 .55rem}
+.deploy-title .dot{width:.65rem;height:.65rem;border-radius:999px;background:var(--sage);box-shadow:0 0 0 6px rgba(148,167,126,.15)}
+.deploy-copy{color:var(--bone-soft);font-size:.92rem;margin:0 0 1rem}
+.deploy-steps{counter-reset:step;list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.deploy-steps li{counter-increment:step;display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;align-items:start;color:var(--muted);font-size:.86rem}
+.deploy-steps li::before{content:counter(step);display:grid;place-items:center;width:1.45rem;height:1.45rem;border-radius:50%;background:rgba(232,169,66,.14);color:var(--amber);font-family:var(--mono);font-size:.72rem;border:1px solid rgba(232,169,66,.28)}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(23,17,13,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);margin:0 calc(clamp(1rem,3vw,2.2rem) * -1);padding:.75rem clamp(1rem,3vw,2.2rem)}
+.toolbar-inner{width:min(1440px,100%);margin:0 auto;display:flex;gap:.7rem;align-items:center;justify-content:space-between}
+.brand-mini{display:flex;gap:.7rem;align-items:center;min-width:0;font-weight:750}
+.brand-mark{display:grid;place-items:center;flex:0 0 2.15rem;width:2.15rem;height:2.15rem;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--ember));color:var(--night);font-family:var(--serif);font-weight:900}
+.brand-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-links{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a,.ghost-btn{border:1px solid var(--line);background:rgba(243,234,219,.055);color:var(--bone-soft);border-radius:999px;padding:.48rem .78rem;font-size:.83rem;text-decoration:none}
+.nav-links a:hover,.ghost-btn:hover{border-color:rgba(232,169,66,.48);color:var(--bone);background:rgba(232,169,66,.10);text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.85rem;margin:1.4rem 0 1.7rem}
+.stat{border:1px solid var(--line);background:rgba(43,33,24,.72);border-radius:16px;padding:1rem;min-height:104px}
+.stat .num{font-family:var(--serif);font-weight:800;font-size:clamp(1.6rem,3.5vw,2.65rem);line-height:1;color:var(--amber);letter-spacing:-.04em}
+.stat .label{color:var(--muted);font-size:.8rem;margin-top:.45rem}
+.section{padding:1.5rem 0}
+.section-head{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:1rem}
+.section-kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem}
+h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.05;letter-spacing:-.035em;margin:0}
+.section-sub{color:var(--muted);margin:.35rem 0 0;max-width:72ch;font-size:.93rem}
+.shortcut-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.85rem}
+.shortcut{display:flex;flex-direction:column;gap:.55rem;min-height:145px;text-align:left;border:1px solid var(--line);background:linear-gradient(180deg,rgba(53,40,29,.86),rgba(43,33,24,.86));color:var(--bone);border-radius:16px;padding:1rem;box-shadow:none;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.shortcut:hover{transform:translateY(-2px);border-color:rgba(232,169,66,.46);background:linear-gradient(180deg,rgba(68,50,34,.92),rgba(43,33,24,.92))}
+.shortcut .kind{align-self:flex-start;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.14em;color:var(--amber);border:1px solid rgba(232,169,66,.28);border-radius:999px;padding:.18rem .42rem;background:rgba(232,169,66,.08)}
+.shortcut strong{font-size:1rem;line-height:1.2}
+.shortcut small{color:var(--muted);font-family:var(--mono);font-size:.73rem;word-break:break-word;margin-top:auto}
+.library-layout{display:grid;grid-template-columns:390px minmax(0,1fr);gap:1rem;align-items:start}
+.panel{background:rgba(43,33,24,.78);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.file-panel{position:sticky;top:4.7rem;max-height:calc(100vh - 5.6rem);display:flex;flex-direction:column;overflow:hidden}
+.panel-head{padding:1rem;border-bottom:1px solid var(--line)}
+.search-wrap{position:relative;margin-bottom:.75rem}
+.search-wrap input{width:100%;background:rgba(23,17,13,.74);color:var(--bone);border:1px solid var(--line);border-radius:12px;padding:.78rem .9rem .78rem 2.35rem;outline:none}
+.search-wrap input:focus{border-color:rgba(232,169,66,.6);box-shadow:0 0 0 4px rgba(232,169,66,.10)}
+.search-wrap svg{position:absolute;left:.78rem;top:50%;transform:translateY(-50%);width:1rem;height:1rem;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:.42rem}
+.filter-btn{border:1px solid var(--line);border-radius:999px;background:rgba(243,234,219,.05);color:var(--bone-soft);padding:.36rem .6rem;font-size:.78rem}
+.filter-btn.active{background:rgba(232,169,66,.18);border-color:rgba(232,169,66,.52);color:var(--amber)}
+.list-meta{display:flex;justify-content:space-between;gap:.8rem;color:var(--muted);font-size:.78rem;margin-top:.75rem;font-family:var(--mono)}
+.file-list{overflow:auto;padding:.45rem .55rem 1rem}
+.dir-group{margin:.55rem 0 .25rem}
+.dir-title{position:sticky;top:0;z-index:2;background:rgba(43,33,24,.96);border-bottom:1px solid rgba(243,234,219,.08);padding:.55rem .45rem .4rem;color:var(--amber);font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;text-transform:uppercase}
+.file-item{width:100%;display:grid;grid-template-columns:2.15rem minmax(0,1fr);gap:.65rem;text-align:left;border:1px solid transparent;background:transparent;color:var(--bone-soft);border-radius:13px;padding:.62rem .5rem;margin:.15rem 0}
+.file-item:hover{background:rgba(243,234,219,.055);border-color:rgba(243,234,219,.08)}
+.file-item.active{background:rgba(232,169,66,.13);border-color:rgba(232,169,66,.36);color:var(--bone)}
+.file-icon{width:2.1rem;height:2.1rem;border-radius:10px;display:grid;place-items:center;background:rgba(243,234,219,.08);border:1px solid rgba(243,234,219,.08);font-family:var(--mono);font-size:.65rem;color:var(--amber);text-transform:uppercase}
+.file-item.active .file-icon{background:rgba(232,169,66,.18);border-color:rgba(232,169,66,.30)}
+.file-name{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.9rem}
+.file-path{color:var(--muted);font-family:var(--mono);font-size:.71rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:.1rem}
+.file-tags{display:flex;gap:.28rem;flex-wrap:wrap;margin-top:.35rem}
+.file-tag{font-family:var(--mono);font-size:.62rem;color:var(--muted);border:1px solid rgba(243,234,219,.10);border-radius:999px;padding:.08rem .33rem;background:rgba(23,17,13,.28)}
+.viewer-panel{min-height:720px;overflow:hidden}
+.viewer-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:start;padding:1rem 1.1rem;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(53,40,29,.72),rgba(43,33,24,.42))}
+.viewer-title{font-family:var(--serif);font-size:clamp(1.35rem,2.7vw,2.25rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 .35rem;word-break:break-word}
+.viewer-path{color:var(--muted);font-family:var(--mono);font-size:.76rem;word-break:break-all}
+.viewer-actions{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.action-btn{border:1px solid var(--line);background:rgba(23,17,13,.50);color:var(--bone-soft);border-radius:10px;padding:.5rem .65rem;font-size:.8rem;text-decoration:none;white-space:nowrap}
+.action-btn:hover{border-color:rgba(232,169,66,.50);color:var(--bone);text-decoration:none;background:rgba(232,169,66,.10)}
+.action-btn.primary{background:rgba(232,169,66,.18);border-color:rgba(232,169,66,.42);color:var(--amber)}
+.mode-toggle{display:flex;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:rgba(23,17,13,.45)}
+.mode-toggle button{border:0;background:transparent;color:var(--muted);padding:.5rem .58rem;font-size:.78rem}
+.mode-toggle button.active{background:rgba(232,169,66,.17);color:var(--amber)}
+.badges{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.65rem}
+.badge{font-family:var(--mono);font-size:.66rem;color:var(--bone-soft);border:1px solid rgba(243,234,219,.12);border-radius:999px;background:rgba(23,17,13,.28);padding:.18rem .42rem}
+.badge.gold{color:var(--amber);border-color:rgba(232,169,66,.32);background:rgba(232,169,66,.08)}
+.content-wrap{padding:clamp(1rem,2.5vw,1.55rem)}
+.notice{border:1px solid rgba(232,169,66,.30);background:rgba(232,169,66,.08);border-radius:14px;padding:1rem;color:var(--bone-soft);margin-bottom:1rem}
+.notice strong{color:var(--amber)}
+.markdown-body{max-width:900px;color:var(--bone-soft);font-size:1rem}
+.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-family:var(--serif);color:var(--bone);line-height:1.14;letter-spacing:-.025em;margin:1.45em 0 .55em}
+.markdown-body h1{font-size:2.25rem;border-bottom:1px solid var(--line);padding-bottom:.45rem;margin-top:.2rem}
+.markdown-body h2{font-size:1.75rem;border-bottom:1px solid rgba(243,234,219,.10);padding-bottom:.35rem}
+.markdown-body h3{font-size:1.35rem;color:var(--amber)}
+.markdown-body h4{font-size:1.1rem}
+.markdown-body p{margin:.85rem 0}
+.markdown-body ul,.markdown-body ol{padding-left:1.35rem;margin:.8rem 0}
+.markdown-body li{margin:.32rem 0}
+.markdown-body blockquote{margin:1rem 0;padding:.75rem 1rem;border-left:3px solid var(--amber);background:rgba(232,169,66,.08);border-radius:0 12px 12px 0;color:var(--bone)}
+.markdown-body code{font-family:var(--mono);font-size:.88em;background:rgba(23,17,13,.62);border:1px solid rgba(243,234,219,.10);border-radius:6px;padding:.08rem .28rem;color:#ffd385}
+.markdown-body pre{background:#100c09;border:1px solid var(--line);border-radius:14px;padding:1rem;overflow:auto;color:var(--bone-soft)}
+.markdown-body pre code{background:transparent;border:0;padding:0;color:inherit;font-size:.86rem}
+.markdown-body table{width:100%;border-collapse:collapse;margin:1rem 0;display:block;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.markdown-body th,.markdown-body td{padding:.62rem .75rem;border-bottom:1px solid rgba(243,234,219,.11);border-right:1px solid rgba(243,234,219,.08);vertical-align:top;min-width:110px}
+.markdown-body th{color:var(--amber);font-family:var(--mono);font-size:.73rem;text-transform:uppercase;letter-spacing:.08em;background:rgba(232,169,66,.08);text-align:left}
+.markdown-body tr:last-child td{border-bottom:0}
+.markdown-body hr{border:0;border-top:1px solid var(--line);margin:1.5rem 0}
+.markdown-body img{max-width:100%;border-radius:12px;border:1px solid var(--line)}
+.raw-pre{margin:0;white-space:pre-wrap;word-break:break-word;background:#100c09;color:var(--bone-soft);border:1px solid var(--line);border-radius:14px;padding:1rem;font-family:var(--mono);font-size:.83rem;line-height:1.55;overflow:auto}
+.preview-frame{width:100%;height:min(74vh,840px);border:1px solid var(--line);border-radius:14px;background:#fff}
+.file-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1rem 0}
+.file-detail{border:1px solid var(--line);border-radius:12px;background:rgba(23,17,13,.28);padding:.8rem}
+.file-detail span{display:block;color:var(--muted);font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.11em;margin-bottom:.2rem}
+.file-detail strong{word-break:break-word}
+.empty{padding:2rem;text-align:center;color:var(--muted)}
+.toast{position:fixed;right:1rem;bottom:1rem;z-index:60;background:rgba(23,17,13,.94);border:1px solid rgba(232,169,66,.38);color:var(--bone);border-radius:12px;padding:.75rem .9rem;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.18s ease;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.footer{border-top:1px solid var(--line);margin-top:2rem;padding:1.3rem 0;color:var(--muted);font-size:.84rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:1100px){.hero-inner{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.shortcut-grid{grid-template-columns:repeat(2,1fr)}.library-layout{grid-template-columns:1fr}.file-panel{position:relative;top:auto;max-height:520px}.viewer-panel{min-height:auto}}
+@media (max-width:680px){.shell{padding-inline:.8rem}.toolbar{margin-inline:-.8rem;padding-inline:.8rem}.toolbar-inner{align-items:flex-start;flex-direction:column}.nav-links{justify-content:flex-start}.stats{grid-template-columns:repeat(2,1fr)}.shortcut-grid{grid-template-columns:1fr}.viewer-top{grid-template-columns:1fr}.viewer-actions{justify-content:flex-start}.file-detail-grid{grid-template-columns:1fr}h1{max-width:unset}}
+</style>
+</head>
+<body>
+<div class="toolbar" aria-label="Owner portal navigation">
+  <div class="toolbar-inner">
+    <div class="brand-mini"><div class="brand-mark">AH</div><div class="brand-text">Ancestral Healing Owner Portal</div></div>
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#shortcuts">Shortcuts</a>
+      <a href="#library">File Library</a>
+      <a href="NETLIFY-DEPLOY.md" target="_blank" rel="noopener">Deploy Notes</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero shell">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Private static knowledge base</p>
+      <h1>Owner <span>Portal</span></h1>
+      <p class="lede">A Netlify-ready HTML front door for the full Ancestral Healing repository. Search every shipped file, preview dashboards and PDFs, and read markdown documents without leaving the browser.</p>
+    </div>
+    <aside class="hero-card" aria-label="Netlify deploy instructions">
+      <div class="deploy-title"><span class="dot"></span><span>Ready for Netlify drag-and-drop</span></div>
+      <p class="deploy-copy">The deployment zip keeps the repo structure intact and places this <code>index.html</code> at the root, so Netlify can serve it immediately with no build step.</p>
+      <ol class="deploy-steps">
+        <li>Open Netlify and choose <strong>Add new site → Deploy manually</strong>.</li>
+        <li>Drop <strong>ancestral-healing-netlify-drop.zip</strong> into the upload area.</li>
+        <li>Open the generated Netlify URL and use this portal as the owner's home base.</li>
+      </ol>
+    </aside>
+  </div>
+</header>
+
+<main class="shell">
+  <section class="section" id="overview">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Repository overview</div>
+        <h2>Everything shipped in one static site.</h2>
+        <p class="section-sub">Counts are loaded from <code>site-manifest.json</code>, generated from the repository files included in the deploy zip.</p>
+      </div>
+    </div>
+    <div class="stats" id="stats" aria-live="polite"></div>
+  </section>
+
+  <section class="section" id="shortcuts">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Owner shortcuts</div>
+        <h2>Start with the most useful pages.</h2>
+        <p class="section-sub">Open the repo README, content index, editorial rules, existing dashboards, and reference pages directly from here.</p>
+      </div>
+    </div>
+    <div class="shortcut-grid" id="shortcutsGrid"></div>
+  </section>
+
+  <section class="section" id="library">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">File library</div>
+        <h2>Browse and read the repo.</h2>
+        <p class="section-sub">Markdown files render in the built-in reader. HTML dashboards and PDFs can be previewed or opened in a new tab.</p>
+      </div>
+    </div>
+
+    <div class="library-layout">
+      <aside class="panel file-panel" aria-label="Repository file browser">
+        <div class="panel-head">
+          <label class="search-wrap" for="searchInput">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="searchInput" type="search" placeholder="Search title, path, pillar, type..." autocomplete="off">
+          </label>
+          <div class="filters" id="filters" role="group" aria-label="Filter files">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="markdown">Markdown</button>
+            <button class="filter-btn" data-filter="html">HTML</button>
+            <button class="filter-btn" data-filter="pdf">PDF</button>
+            <button class="filter-btn" data-filter="data">Data</button>
+            <button class="filter-btn" data-filter="other">Other</button>
+          </div>
+          <div class="list-meta"><span id="resultCount">Loading…</span><span id="totalSize"></span></div>
+        </div>
+        <div class="file-list" id="fileList"></div>
+      </aside>
+
+      <article class="panel viewer-panel" aria-live="polite">
+        <div class="viewer-top">
+          <div>
+            <h2 class="viewer-title" id="viewerTitle">Loading repository…</h2>
+            <div class="viewer-path" id="viewerPath">site-manifest.json</div>
+            <div class="badges" id="viewerBadges"></div>
+          </div>
+          <div class="viewer-actions">
+            <div class="mode-toggle" id="modeToggle" hidden>
+              <button type="button" class="active" data-mode="rendered">Rendered</button>
+              <button type="button" data-mode="raw">Raw</button>
+            </div>
+            <button class="action-btn" id="copyBtn" type="button" hidden>Copy text</button>
+            <a class="action-btn" id="openBtn" href="#" target="_blank" rel="noopener" hidden>Open file</a>
+            <a class="action-btn primary" id="downloadBtn" href="#" download hidden>Download</a>
+          </div>
+        </div>
+        <div class="content-wrap" id="viewerContent">
+          <div class="notice"><strong>Loading…</strong> If this message stays visible, make sure the site was deployed through Netlify or another static server. Browsers block markdown fetches when this file is opened directly from your computer.</div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer shell">
+  <span>Generated for Ancestral Healing owner review.</span>
+  <span id="generatedAt">Manifest loading…</span>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const state = {
+  manifest:null,
+  files:[],
+  selected:null,
+  selectedText:'',
+  selectedParsed:null,
+  filter:'all',
+  viewMode:'rendered'
+};
+
+const els = {};
+const shortcutPaths = [
+  'README.md',
+  'CONTENT-INDEX.md',
+  'EDITORIAL-GUIDELINES.md',
+  'ancestral-healing-kb.html',
+  'ah-brain/reference/knowledge-base.html',
+  'ah-analytics/index.html',
+  'ah-autopilot/index.html',
+  'ah-brain/source-pdfs/README.md'
+];
+
+function boot(){
+  cacheElements();
+  bindEvents();
+  loadManifest();
+}
+
+function cacheElements(){
+  for (const id of ['stats','shortcutsGrid','searchInput','filters','resultCount','totalSize','fileList','viewerTitle','viewerPath','viewerBadges','viewerContent','modeToggle','copyBtn','openBtn','downloadBtn','toast','generatedAt']) {
+    els[id] = document.getElementById(id);
+  }
+}
+
+function bindEvents(){
+  els.searchInput.addEventListener('input', renderFileList);
+  els.filters.addEventListener('click', event => {
+    const button = event.target.closest('button[data-filter]');
+    if (!button) return;
+    state.filter = button.dataset.filter;
+    els.filters.querySelectorAll('button').forEach(btn => btn.classList.toggle('active', btn === button));
+    renderFileList();
+  });
+  els.modeToggle.addEventListener('click', event => {
+    const button = event.target.closest('button[data-mode]');
+    if (!button) return;
+    state.viewMode = button.dataset.mode;
+    els.modeToggle.querySelectorAll('button').forEach(btn => btn.classList.toggle('active', btn === button));
+    renderSelectedContent();
+  });
+  els.copyBtn.addEventListener('click', copyCurrentText);
+  window.addEventListener('hashchange', () => {
+    const path = getHashFile();
+    if (path && (!state.selected || state.selected.path !== path)) selectFile(path, false);
+  });
+}
+
+async function loadManifest(){
+  try {
+    const response = await fetch('site-manifest.json', {cache:'no-store'});
+    if (!response.ok) throw new Error(`Manifest returned ${response.status}`);
+    state.manifest = await response.json();
+    state.files = (state.manifest.files || []).slice().sort((a,b) => a.path.localeCompare(b.path));
+    renderStats();
+    renderShortcuts();
+    renderFileList();
+    els.generatedAt.textContent = `Manifest generated ${formatDate(state.manifest.generatedAt)}`;
+    const requested = getHashFile();
+    const start = state.files.find(file => file.path === requested) || state.files.find(file => file.path === 'README.md') || state.files.find(file => file.kind === 'markdown') || state.files[0];
+    if (start) selectFile(start.path, true);
+  } catch (error) {
+    els.viewerTitle.textContent = 'Could not load site manifest';
+    els.viewerPath.textContent = 'site-manifest.json';
+    els.viewerBadges.innerHTML = '<span class="badge gold">Static server required</span>';
+    els.viewerContent.innerHTML = `<div class="notice"><strong>Manifest failed to load.</strong><br>${escapeHtml(error.message)}<br><br>Deploy the zip to Netlify or serve this folder with a local static server. Opening <code>index.html</code> directly from the file system can block browser fetch requests.</div>`;
+  }
+}
+
+function renderStats(){
+  const totals = state.manifest.totals || {};
+  const cards = [
+    ['Files', totals.files || state.files.length],
+    ['Markdown docs', totals.markdown || countKind('markdown')],
+    ['HTML pages', totals.html || countKind('html')],
+    ['PDF sources', totals.pdf || countKind('pdf')],
+    ['Total size', formatBytes(totals.bytes || state.files.reduce((sum,file) => sum + (file.size || 0),0))]
+  ];
+  els.stats.innerHTML = cards.map(([label,value]) => `<div class="stat"><div class="num">${escapeHtml(String(value))}</div><div class="label">${escapeHtml(label)}</div></div>`).join('');
+}
+
+function renderShortcuts(){
+  const cards = shortcutPaths.map(path => state.files.find(file => file.path === path)).filter(Boolean);
+  els.shortcutsGrid.innerHTML = cards.map(file => {
+    const title = displayTitle(file);
+    return `<button class="shortcut" type="button" data-path="${attr(file.path)}">
+      <span class="kind">${escapeHtml(file.kind)}</span>
+      <strong>${escapeHtml(title)}</strong>
+      <small>${escapeHtml(file.path)}</small>
+    </button>`;
+  }).join('');
+  els.shortcutsGrid.querySelectorAll('[data-path]').forEach(button => button.addEventListener('click', () => {
+    selectFile(button.dataset.path, true);
+    document.getElementById('library').scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+}
+
+function renderFileList(){
+  const query = els.searchInput.value.trim().toLowerCase();
+  const visible = state.files.filter(file => matchesFilter(file, query));
+  els.resultCount.textContent = `${visible.length} of ${state.files.length} files`;
+  els.totalSize.textContent = formatBytes(visible.reduce((sum,file) => sum + (file.size || 0), 0));
+  if (!visible.length) {
+    els.fileList.innerHTML = '<div class="empty">No files match that search.</div>';
+    return;
+  }
+  const groups = groupByDirectory(visible);
+  els.fileList.innerHTML = groups.map(([dir, files]) => `
+    <div class="dir-group">
+      <div class="dir-title">${escapeHtml(dir || 'repository root')}</div>
+      ${files.map(fileItemHtml).join('')}
+    </div>
+  `).join('');
+  els.fileList.querySelectorAll('[data-path]').forEach(button => {
+    button.addEventListener('click', () => selectFile(button.dataset.path, true));
+  });
+}
+
+function fileItemHtml(file){
+  const active = state.selected && state.selected.path === file.path;
+  const tags = [file.docType, file.pillar, formatBytes(file.size)].filter(Boolean).slice(0,3);
+  return `<button class="file-item${active ? ' active' : ''}" type="button" data-path="${attr(file.path)}">
+    <span class="file-icon">${escapeHtml(iconLabel(file))}</span>
+    <span class="file-copy">
+      <span class="file-name">${escapeHtml(displayTitle(file))}</span>
+      <span class="file-path">${escapeHtml(file.path)}</span>
+      <span class="file-tags">${tags.map(tag => `<span class="file-tag">${escapeHtml(tag)}</span>`).join('')}</span>
+    </span>
+  </button>`;
+}
+
+async function selectFile(path, updateHash){
+  const file = state.files.find(item => item.path === path);
+  if (!file) return;
+  state.selected = file;
+  state.selectedText = '';
+  state.selectedParsed = null;
+  state.viewMode = 'rendered';
+  els.modeToggle.querySelectorAll('button').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === 'rendered'));
+  if (updateHash) setHashFile(file.path);
+  renderFileList();
+  renderViewerShell(file);
+  if (file.kind === 'markdown' || file.kind === 'json' || file.kind === 'config' || (file.kind === 'other' && file.size < 250000)) {
+    await loadTextFile(file);
+  } else {
+    renderSelectedContent();
+  }
+}
+
+function renderViewerShell(file){
+  els.viewerTitle.textContent = displayTitle(file);
+  els.viewerPath.textContent = file.path;
+  const badges = [file.kind, file.extension || 'no extension', file.docType, file.pillar, formatBytes(file.size)].filter(Boolean);
+  els.viewerBadges.innerHTML = badges.map((badge, index) => `<span class="badge${index === 0 ? ' gold' : ''}">${escapeHtml(badge)}</span>`).join('');
+  const href = urlFor(file.path);
+  els.openBtn.href = href;
+  els.downloadBtn.href = href;
+  els.downloadBtn.setAttribute('download', file.name || 'download');
+  els.openBtn.hidden = false;
+  els.downloadBtn.hidden = false;
+  els.copyBtn.hidden = true;
+  els.modeToggle.hidden = file.kind !== 'markdown';
+  els.viewerContent.innerHTML = '<div class="notice"><strong>Loading file…</strong></div>';
+}
+
+async function loadTextFile(file){
+  try {
+    const response = await fetch(urlFor(file.path), {cache:'no-store'});
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    state.selectedText = await response.text();
+    state.selectedParsed = file.kind === 'markdown' ? parseFrontmatter(state.selectedText) : null;
+    els.copyBtn.hidden = false;
+    renderSelectedContent();
+  } catch (error) {
+    els.viewerContent.innerHTML = `<div class="notice"><strong>Could not load file text.</strong><br>${escapeHtml(error.message)}</div>`;
+  }
+}
+
+function renderSelectedContent(){
+  const file = state.selected;
+  if (!file) return;
+  if (file.kind === 'markdown') {
+    if (!state.selectedText) {
+      els.viewerContent.innerHTML = '<div class="notice"><strong>Loading markdown…</strong></div>';
+      return;
+    }
+    if (state.viewMode === 'raw') {
+      els.viewerContent.innerHTML = `<pre class="raw-pre">${escapeHtml(state.selectedText)}</pre>`;
+    } else {
+      const parsed = state.selectedParsed || parseFrontmatter(state.selectedText);
+      const frontmatter = renderFrontmatter(parsed.data);
+      els.viewerContent.innerHTML = `${frontmatter}<div class="markdown-body">${markdownToHtml(parsed.body)}</div>`;
+    }
+    return;
+  }
+  if (file.kind === 'html') {
+    els.viewerContent.innerHTML = `${fileDetails(file)}<iframe class="preview-frame" title="Preview of ${attr(file.path)}" src="${attr(urlFor(file.path))}"></iframe>`;
+    return;
+  }
+  if (file.kind === 'pdf') {
+    els.viewerContent.innerHTML = `${fileDetails(file)}<iframe class="preview-frame" title="Preview of ${attr(file.path)}" src="${attr(urlFor(file.path))}"></iframe>`;
+    return;
+  }
+  if (file.kind === 'json' || file.kind === 'config' || (file.kind === 'other' && state.selectedText)) {
+    const raw = file.kind === 'json' ? prettyJson(state.selectedText) : state.selectedText;
+    els.viewerContent.innerHTML = `${fileDetails(file)}<pre class="raw-pre">${escapeHtml(raw)}</pre>`;
+    return;
+  }
+  els.viewerContent.innerHTML = `${fileDetails(file)}<div class="notice"><strong>Preview not available for this file type.</strong><br>Use Open file or Download to inspect it.</div>`;
+}
+
+function renderFrontmatter(data){
+  const entries = Object.entries(data || {});
+  if (!entries.length) return '';
+  return `<div class="notice"><strong>Document metadata</strong><div class="file-detail-grid">${entries.map(([key,value]) => `<div class="file-detail"><span>${escapeHtml(key)}</span><strong>${escapeHtml(String(value))}</strong></div>`).join('')}</div></div>`;
+}
+
+function fileDetails(file){
+  const rows = [
+    ['Path', file.path],
+    ['Type', file.kind],
+    ['Size', formatBytes(file.size)],
+    ['Extension', file.extension || 'none']
+  ];
+  return `<div class="file-detail-grid">${rows.map(([label,value]) => `<div class="file-detail"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</div>`;
+}
+
+function parseFrontmatter(markdown){
+  const text = String(markdown || '').replace(/\r\n/g,'\n');
+  if (!text.startsWith('---\n')) return {data:{}, body:text};
+  const end = text.indexOf('\n---', 4);
+  if (end === -1) return {data:{}, body:text};
+  const yaml = text.slice(4, end).trim();
+  const body = text.slice(text.indexOf('\n', end + 4) + 1);
+  const data = {};
+  yaml.split('\n').forEach(line => {
+    const match = line.match(/^([^:#]+):\s*(.*)$/);
+    if (!match) return;
+    const key = match[1].trim();
+    let value = match[2].trim();
+    value = value.replace(/^['"]|['"]$/g,'');
+    data[key] = value;
+  });
+  return {data, body};
+}
+
+function markdownToHtml(markdown){
+  let text = String(markdown || '').replace(/\r\n/g,'\n');
+  const codeBlocks = [];
+  text = text.replace(/```([^\n`]*)\n([\s\S]*?)```/g, (_match, lang, code) => {
+    const token = `\u0000CODE${codeBlocks.length}\u0000`;
+    codeBlocks.push(`<pre><code${lang ? ` class="language-${attr(lang.trim())}"` : ''}>${escapeHtml(code.replace(/\n$/,''))}</code></pre>`);
+    return `\n${token}\n`;
+  });
+  const lines = text.split('\n');
+  const out = [];
+  let i = 0;
+  while (i < lines.length) {
+    let line = lines[i];
+    const trimmed = line.trim();
+    if (!trimmed) { i++; continue; }
+    const codeMatch = trimmed.match(/^\u0000CODE(\d+)\u0000$/);
+    if (codeMatch) { out.push(codeBlocks[Number(codeMatch[1])]); i++; continue; }
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) { out.push('<hr>'); i++; continue; }
+    const heading = line.match(/^(#{1,6})\s+(.+)$/);
+    if (heading) {
+      const level = heading[1].length;
+      const content = inlineMarkdown(heading[2].replace(/\s+#+\s*$/,''));
+      const id = slug(stripInline(heading[2]));
+      out.push(`<h${level} id="${attr(id)}">${content}</h${level}>`);
+      i++;
+      continue;
+    }
+    if (isTable(lines, i)) {
+      const parsed = parseTable(lines, i);
+      out.push(parsed.html);
+      i = parsed.next;
+      continue;
+    }
+    if (/^>\s?/.test(line)) {
+      const parts = [];
+      while (i < lines.length && /^>\s?/.test(lines[i])) {
+        parts.push(lines[i].replace(/^>\s?/,''));
+        i++;
+      }
+      out.push(`<blockquote>${markdownToHtml(parts.join('\n'))}</blockquote>`);
+      continue;
+    }
+    if (/^\s*[-*+]\s+/.test(line)) {
+      const items = [];
+      while (i < lines.length && /^\s*[-*+]\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\s*[-*+]\s+/,''));
+        i++;
+      }
+      out.push(`<ul>${items.map(item => `<li>${inlineMarkdown(item)}</li>`).join('')}</ul>`);
+      continue;
+    }
+    if (/^\s*\d+[.)]\s+/.test(line)) {
+      const items = [];
+      while (i < lines.length && /^\s*\d+[.)]\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\s*\d+[.)]\s+/,''));
+        i++;
+      }
+      out.push(`<ol>${items.map(item => `<li>${inlineMarkdown(item)}</li>`).join('')}</ol>`);
+      continue;
+    }
+    const para = [line];
+    i++;
+    while (i < lines.length && lines[i].trim() && !startsBlock(lines, i)) {
+      para.push(lines[i]);
+      i++;
+    }
+    out.push(`<p>${inlineMarkdown(para.join(' '))}</p>`);
+  }
+  return out.join('\n');
+}
+
+function startsBlock(lines, index){
+  const line = lines[index];
+  const trimmed = line.trim();
+  return /^\u0000CODE\d+\u0000$/.test(trimmed) || /^(#{1,6})\s+/.test(line) || /^>\s?/.test(line) || /^\s*[-*+]\s+/.test(line) || /^\s*\d+[.)]\s+/.test(line) || /^(-{3,}|\*{3,}|_{3,})$/.test(trimmed) || isTable(lines, index);
+}
+
+function isTable(lines, index){
+  if (index + 1 >= lines.length) return false;
+  const header = lines[index].trim();
+  const separator = lines[index + 1].trim();
+  return header.includes('|') && /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(separator);
+}
+
+function parseTable(lines, index){
+  const split = row => row.trim().replace(/^\|/,'').replace(/\|$/,'').split('|').map(cell => cell.trim());
+  const headers = split(lines[index]);
+  let i = index + 2;
+  const rows = [];
+  while (i < lines.length && lines[i].trim().includes('|')) {
+    rows.push(split(lines[i]));
+    i++;
+  }
+  const thead = `<thead><tr>${headers.map(cell => `<th>${inlineMarkdown(cell)}</th>`).join('')}</tr></thead>`;
+  const tbody = `<tbody>${rows.map(row => `<tr>${headers.map((_h, idx) => `<td>${inlineMarkdown(row[idx] || '')}</td>`).join('')}</tr>`).join('')}</tbody>`;
+  return {html:`<table>${thead}${tbody}</table>`, next:i};
+}
+
+function inlineMarkdown(source){
+  let s = escapeHtml(String(source || ''));
+  const codes = [];
+  s = s.replace(/`([^`]+)`/g, (_m, code) => {
+    const token = `\u0000INLINE${codes.length}\u0000`;
+    codes.push(`<code>${escapeHtml(code)}</code>`);
+    return token;
+  });
+  s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, (_m, alt, url) => `<img src="${attr(safeUrl(url))}" alt="${attr(alt)}">`);
+  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, (_m, label, url) => `<a href="${attr(safeUrl(url))}" target="_blank" rel="noopener">${label}</a>`);
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+  s = s.replace(/(^|\W)\*([^*]+)\*/g, '$1<em>$2</em>');
+  s = s.replace(/(^|\W)_([^_]+)_/g, '$1<em>$2</em>');
+  codes.forEach((code, idx) => { s = s.replace(`\u0000INLINE${idx}\u0000`, code); });
+  return s;
+}
+
+function stripInline(source){
+  return String(source || '').replace(/[`*_\[\]()#]/g,'').trim();
+}
+
+function prettyJson(text){
+  try { return JSON.stringify(JSON.parse(text), null, 2); }
+  catch { return text; }
+}
+
+function matchesFilter(file, query){
+  const filterOk = state.filter === 'all' ||
+    (state.filter === 'data' && file.kind === 'json') ||
+    (state.filter === 'other' && !['markdown','html','pdf','json'].includes(file.kind)) ||
+    file.kind === state.filter;
+  if (!filterOk) return false;
+  if (!query) return true;
+  const haystack = [file.path,file.name,file.title,file.pillar,file.docType,file.kind,file.extension].filter(Boolean).join(' ').toLowerCase();
+  return haystack.includes(query);
+}
+
+function groupByDirectory(files){
+  const map = new Map();
+  files.forEach(file => {
+    const dir = file.directory || '';
+    if (!map.has(dir)) map.set(dir, []);
+    map.get(dir).push(file);
+  });
+  return [...map.entries()].sort(([a],[b]) => a.localeCompare(b)).map(([dir, files]) => [dir, files.sort((a,b) => a.name.localeCompare(b.name))]);
+}
+
+function displayTitle(file){
+  if (!file) return '';
+  return file.title || file.name || file.path;
+}
+
+function iconLabel(file){
+  if (file.kind === 'markdown') return 'md';
+  if (file.kind === 'html') return 'html';
+  if (file.kind === 'pdf') return 'pdf';
+  if (file.kind === 'json') return 'json';
+  if (file.kind === 'archive') return 'zip';
+  if (file.extension) return file.extension.replace('.','').slice(0,4);
+  return 'file';
+}
+
+function countKind(kind){ return state.files.filter(file => file.kind === kind).length; }
+
+function urlFor(path){ return String(path).split('/').map(segment => encodeURIComponent(segment)).join('/'); }
+function setHashFile(path){ history.replaceState(null, '', `#file=${encodeURIComponent(path)}`); }
+function getHashFile(){ const params = new URLSearchParams(location.hash.replace(/^#/,'')); return params.get('file'); }
+function formatBytes(bytes){
+  const size = Number(bytes) || 0;
+  if (size < 1024) return `${size} B`;
+  const units = ['KB','MB','GB'];
+  let value = size / 1024;
+  let unit = units.shift();
+  while (value >= 1024 && units.length) { value /= 1024; unit = units.shift(); }
+  return `${value >= 10 ? value.toFixed(1) : value.toFixed(2)} ${unit}`;
+}
+function formatDate(value){
+  if (!value) return 'unknown date';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleString(undefined, {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+function slug(value){ return String(value || '').toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').slice(0,80) || 'section'; }
+function safeUrl(value){
+  const url = String(value || '').trim();
+  if (/^(https?:|mailto:|#|\/)/i.test(url)) return url;
+  if (/^[\w./%+\-]+(?:#[\w-]+)?$/.test(url)) return urlFor(url);
+  return '#';
+}
+function escapeHtml(value){ return String(value ?? '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char])); }
+function attr(value){ return escapeHtml(value).replace(/'/g,'&#39;'); }
+function showToast(message){
+  els.toast.textContent = message;
+  els.toast.classList.add('show');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => els.toast.classList.remove('show'), 1900);
+}
+async function copyCurrentText(){
+  if (!state.selectedText) return;
+  try {
+    await navigator.clipboard.writeText(state.selectedText);
+    showToast('Copied file text.');
+  } catch {
+    showToast('Copy failed in this browser.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', boot);
+</script>
+</body>
+</html>
