@@ -1,9 +1,9 @@
 {
   "name": "Ancestral Healing Owner Portal",
-  "generatedAt": "2026-07-22T22:57:19.884478+00:00",
+  "generatedAt": "2026-07-22T23:09:43.207849+00:00",
   "totals": {
     "files": 69,
-    "bytes": 19594596,
+    "bytes": 19607327,
     "markdown": 50,
     "html": 6,
     "pdf": 6,
@@ -655,7 +655,7 @@
       "directory": "",
       "extension": ".html",
       "kind": "html",
-      "size": 51339,
+      "size": 63618,
       "mime": "text/html",
       "title": "Index"
     },
@@ -665,7 +665,7 @@
       "directory": "",
       "extension": ".md",
       "kind": "markdown",
-      "size": 2219,
+      "size": 2671,
       "mime": "text/markdown",
       "title": "Netlify Drag-and-Drop Deploy"
     },

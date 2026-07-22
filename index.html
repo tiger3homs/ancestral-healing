@@ -162,6 +162,56 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
 .check-list{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.55rem}.check-list li{display:flex;gap:.65rem;color:var(--bone-soft)}.check-list li::before{content:'✓';color:var(--sage);font-weight:900}.value-grid,.qa-grid,.evidence-grid,.cost-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}.value-card .number{font:700 .75rem var(--mono);letter-spacing:.12em;color:var(--amber);text-transform:uppercase;margin-bottom:.7rem}.qa-card{position:relative;overflow:hidden}.qa-card::after{content:'?';position:absolute;right:1rem;top:-.6rem;font:800 5rem var(--serif);color:rgba(232,169,66,.10)}
 .roadmap{display:grid;grid-template-columns:repeat(6,1fr);gap:.65rem}.roadmap-card{padding:1rem;min-height:176px}.week{font:700 .7rem var(--mono);letter-spacing:.12em;color:var(--amber);text-transform:uppercase}.roadmap-card h3{font-size:1.05rem;margin-top:.55rem}.roadmap-card p{font-size:.84rem}.evidence-card .metric{font:800 clamp(1.65rem,3vw,2.45rem) var(--serif);color:var(--amber);letter-spacing:-.04em}.evidence-card .metric-label{font:700 .82rem var(--mono);color:var(--bone);margin-top:.15rem}.cost-card.featured{border-color:rgba(232,169,66,.55);background:linear-gradient(145deg,rgba(100,68,29,.46),rgba(43,33,24,.9))}.cost-card .price{font:800 2rem var(--serif);color:var(--amber);margin:.45rem 0}.cost-card small{color:var(--muted)}.risk-note{border-left:3px solid var(--sage);padding:.7rem .9rem;background:rgba(148,167,126,.09);color:var(--bone-soft);border-radius:0 10px 10px 0;margin-top:1rem}
 @media(max-width:1100px){.roadmap{grid-template-columns:repeat(3,1fr)}}@media(max-width:680px){.summary-band,.value-grid,.qa-grid,.evidence-grid,.cost-grid,.roadmap{grid-template-columns:1fr}}
+
+/* Low-risk pilot offer layer */
+.pilot-intro{display:flex;align-items:center;gap:.8rem;border:1px solid rgba(148,167,126,.24);background:rgba(148,167,126,.08);border-radius:14px;padding:.8rem 1rem;margin:0 0 1rem;color:var(--bone-soft)}
+.pilot-intro strong{font:700 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--sage);white-space:nowrap}
+.pilot-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:1rem;align-items:stretch}
+.offer-card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(53,40,29,.92),rgba(32,24,18,.88));padding:clamp(1rem,2.5vw,1.5rem);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.offer-card.featured{position:relative;overflow:hidden;border-color:rgba(232,169,66,.60);background:linear-gradient(145deg,rgba(100,68,29,.52),rgba(43,33,24,.94))}
+.offer-card.featured::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--amber),var(--ember),transparent)}
+.offer-card-head{display:grid;gap:.35rem;margin-bottom:1rem}
+.offer-label{justify-self:start;border:1px solid rgba(232,169,66,.38);background:rgba(232,169,66,.12);border-radius:999px;color:var(--amber);font:700 .66rem var(--mono);letter-spacing:.11em;text-transform:uppercase;padding:.3rem .55rem}
+.offer-card h3{font-family:var(--serif);font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.08;color:var(--bone);margin:.15rem 0 0;letter-spacing:-.025em}
+.offer-deck{color:var(--bone-soft);font-size:.91rem;line-height:1.5;margin:.2rem 0 0;max-width:62ch}
+.offer-price{font:800 clamp(2.2rem,4vw,3rem) var(--serif);letter-spacing:-.05em;color:var(--amber);line-height:1;margin-top:.45rem}
+.offer-price span{font:700 .85rem var(--mono);letter-spacing:.08em;color:var(--bone-soft);margin-left:.2rem}
+.offer-period{color:var(--muted);font-size:.86rem;margin-top:.15rem}
+.offer-section-title{font:700 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 .7rem}
+.offer-list{list-style:none;padding:0;margin:0;display:grid;gap:.52rem}
+.offer-list li{display:flex;gap:.62rem;color:var(--bone-soft);font-size:.9rem;line-height:1.45}
+.offer-list li::before{content:'✓';flex:0 0 auto;color:var(--sage);font-weight:900}
+.offer-outcome{border-left:3px solid var(--amber);background:rgba(232,169,66,.09);border-radius:0 11px 11px 0;color:var(--bone-soft);padding:.8rem .9rem;margin:1.15rem 0 1rem;font-size:.91rem}
+.offer-outcome strong{display:block;color:var(--amber);font:700 .68rem var(--mono);letter-spacing:.13em;text-transform:uppercase;margin-bottom:.25rem}
+.scope-boundary{border-top:1px solid var(--line);padding-top:1rem;margin-top:auto}
+.scope-boundary h4{font:700 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .65rem}
+.exclusion-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem .85rem}
+.exclusion-list li{color:var(--muted);font-size:.79rem;line-height:1.35}
+.exclusion-list li::before{content:'—';color:var(--red);margin-right:.35rem}
+.offer-cta{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--line)}
+.offer-cta a{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;padding:.72rem 1rem;background:var(--amber);color:var(--night);font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(232,169,66,.18)}
+.offer-cta a:hover{background:#f4c36b;text-decoration:none;transform:translateY(-1px)}
+.offer-cta-note{color:var(--muted);font-size:.72rem;line-height:1.35;max-width:22ch}
+.expansion-card{background:linear-gradient(145deg,rgba(53,40,29,.78),rgba(32,24,18,.92))}
+.expansion-card .offer-price{font-size:clamp(2rem,3.5vw,2.55rem)}
+.expansion-card .offer-list{margin-bottom:1.2rem}
+.upgrade-box{border:1px solid rgba(124,160,183,.30);background:rgba(124,160,183,.10);border-radius:13px;padding:.85rem;color:var(--bone-soft);font-size:.86rem;margin-top:auto}
+.upgrade-box strong{color:var(--sky)}
+.investment-box{border-top:1px solid var(--line);margin-top:1rem;padding-top:.8rem;display:grid;gap:.3rem}
+.investment-row{display:flex;justify-content:space-between;gap:.75rem;color:var(--muted);font:600 .77rem var(--mono)}
+.investment-row span:last-child{color:var(--bone-soft);white-space:nowrap}
+.investment-row.credit span:last-child{color:var(--sage)}
+.investment-total{display:flex;justify-content:space-between;gap:.75rem;border-top:1px solid var(--line-strong);margin-top:.3rem;padding-top:.55rem;color:var(--bone);font-weight:800}
+.investment-total strong{color:var(--amber);white-space:nowrap}
+.support-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);gap:1.4rem;align-items:center;margin-top:1rem;border:1px solid var(--line);border-radius:var(--radius);background:rgba(43,33,24,.60);padding:1rem 1.25rem}
+.support-card h3{font-family:var(--serif);font-size:1.25rem;color:var(--bone);margin:0 0 .25rem}
+.support-price{font:800 1.35rem var(--serif);color:var(--amber);margin:.2rem 0 .75rem}.support-price span{font:600 .78rem var(--mono);color:var(--bone-soft);letter-spacing:.04em}
+.support-card p{color:var(--bone-soft);margin:0;font-size:.86rem}.support-card p strong{color:var(--bone)}
+.support-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem .8rem}.support-list li{color:var(--muted);font-size:.8rem}.support-list li::before{content:'•';color:var(--amber);margin-right:.35rem}
+.support-boundary{border-top:1px solid var(--line);margin-top:.8rem;padding-top:.65rem;color:var(--muted)!important;font-size:.76rem!important}
+.pilot-why{border:1px solid rgba(232,169,66,.28);background:linear-gradient(90deg,rgba(232,169,66,.12),rgba(216,106,52,.06));border-radius:14px;padding:.9rem 1rem;margin-top:1rem;color:var(--bone-soft);font-size:.93rem}.pilot-why strong{color:var(--amber)}
+@media(max-width:900px){.pilot-grid{grid-template-columns:1fr}.support-card{grid-template-columns:1fr}}
+@media(max-width:680px){.exclusion-list,.support-list{grid-template-columns:1fr}.pilot-intro{align-items:flex-start;flex-direction:column;gap:.25rem}.offer-cta{align-items:flex-start;flex-direction:column}.offer-cta-note{max-width:36ch}}
 </style>
 </head>
 <body>
@@ -172,6 +222,7 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
       <a href="#business-case">Business case</a>
       <a href="#rollout">Rollout</a>
       <a href="#evidence">Evidence</a>
+      <a href="#pilot-offer">Pilot Offer</a>
       <a href="#library">Source proof</a>
       <a href="NETLIFY-DEPLOY.md" target="_blank" rel="noopener">Deploy Notes</a>
     </nav>
@@ -222,6 +273,96 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
   <section class="section" id="evidence"><div class="section-head"><div><div class="section-kicker">Evidence & proof</div><h2>The strategy follows the signal already in the channel.</h2><p class="section-sub">These are directional findings from the included analytics work—not promises or medical claims.</p></div></div><div class="evidence-grid"><article class="evidence-card"><div class="metric">~29.6k</div><div class="metric-label">existing subscribers</div><p>A meaningful base already exists; the plan focuses on serving it more consistently and intelligently.</p></article><article class="evidence-card"><div class="metric">20+ min</div><div class="metric-label">best-performing duration</div><p>Long-form gives the channel room to explain nuanced topics and reward depth.</p></article><article class="evidence-card"><div class="metric">Priority</div><div class="metric-label">carnivore / animal-based</div><p>Analytics indicate these topics are the strongest editorial starting point for validation.</p></article><article class="evidence-card"><div class="metric">Reframe</div><div class="metric-label">circadian & light</div><p>Existing material can earn a second life through clearer audience hooks and packaging.</p></article></div><div class="risk-note"><strong>Quality guardrail:</strong> Editorial guidelines and human review are part of the system, specifically to control health-claim risk while retaining useful, source-led storytelling.</div></section>
 
   <section class="section" id="cost"><div class="section-head"><div><div class="section-kicker">Time & money</div><h2>Validate leanly; scale only after the workflow earns it.</h2></div></div><div class="cost-grid"><article class="cost-card"><h3>Lean validation</h3><div class="price">$92–155<span style="font-size:1rem">/mo</span></div><p>Enough tooling to prove the brief, council, research, and approval loop.</p><small>Best for the first controlled test.</small></article><article class="cost-card featured"><h3>Recommended standard</h3><div class="price">~$283<span style="font-size:1rem">/mo</span></div><p>The balanced operating scenario for a dependable content cadence.</p><small>Recommended after the pilot rhythm works.</small></article><article class="cost-card"><h3>Aggressive scale</h3><div class="price">~$695<span style="font-size:1rem">/mo</span></div><p>Higher capacity when the process, voice, and quality assurance are proven.</p><small>Scale option, not the starting requirement.</small></article><article class="cost-card"><h3>Owner time</h3><div class="price">15–25<span style="font-size:1rem"> hours</span></div><p>Setup investment over six weeks, aiming to reduce human hours per video from 10–15 to 3–4 without surrendering editorial control.</p><small>Final approval remains human.</small></article></div></section>
+
+  <section class="section" id="pilot-offer">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">LOW-RISK START</div>
+        <h2>Prove the workflow before paying to scale it.</h2>
+        <p class="section-sub">Start with a focused two-week pilot that turns the strongest channel opportunity into a source-led, owner-approved content package. Expand only after the process demonstrates real value.</p>
+      </div>
+    </div>
+    <div class="pilot-intro"><strong>Source-led, owner-approved</strong><span>Every deliverable uses organized AH Brain material, a defined fact-checking pass, health-claim safeguards, and a clear owner approval gate before publishing.</span></div>
+    <div class="pilot-grid">
+      <article class="offer-card featured">
+        <div class="offer-card-head">
+          <span class="offer-label">Recommended starting point</span>
+          <h3>Ancestral Healing Automation Pilot</h3>
+          <div class="offer-price">$1,850 <span>USD</span></div>
+          <div class="offer-period">Two-week implementation</div>
+          <p class="offer-deck">A focused production sprint that converts the best available signal and source material into one usable, owner-reviewed package.</p>
+        </div>
+        <div class="offer-section-title">Include these deliverables</div>
+        <ul class="offer-list">
+          <li>Review existing channel signals and select 2–3 priority content opportunities</li>
+          <li>Prioritize carnivore / animal-based content angles where analytics support them</li>
+          <li>Organize the relevant AH Brain source material for the chosen topic</li>
+          <li>Build a reusable research, fact-checking, and script-writing workflow</li>
+          <li>Create one source-backed long-form video package</li>
+          <li>Deliver a content brief, script or detailed script draft, title/hook options, and thumbnail angle</li>
+          <li>Create a production and publishing checklist</li>
+          <li>Add a clear owner approval gate before anything is published</li>
+          <li>Define simple pilot measurements: time saved, publishing consistency, and early audience response</li>
+        </ul>
+        <div class="offer-outcome"><strong>Outcome</strong>At the end of the pilot, the owner has one practical, repeatable workflow and one production-ready content package—not just a strategy document.</div>
+        <div class="scope-boundary">
+          <h4>Not included yet</h4>
+          <ul class="exclusion-list">
+            <li>Full multi-tool automation stack</li>
+            <li>Full daily intelligence brief</li>
+            <li>Full weekly content council</li>
+            <li>Multiple simultaneous content pipelines</li>
+            <li>Advanced reporting/dashboard implementation</li>
+            <li>Ongoing content operations</li>
+          </ul>
+        </div>
+        <div class="offer-cta"><a href="mailto:?subject=Ancestral%20Healing%20Automation%20Pilot&amp;body=I%27d%20like%20to%20review%20the%20two-week%20pilot.">Start the 2-week pilot <span aria-hidden="true">→</span></a><span class="offer-cta-note">Inquiry CTA · opens an email draft; add the project contact before launch.</span></div>
+      </article>
+
+      <article class="offer-card expansion-card">
+        <div class="offer-card-head">
+          <span class="offer-label">Phase 2 · Expand after proof</span>
+          <h3>Full Content Operating System</h3>
+          <div class="offer-price">$6,500 <span>USD</span></div>
+          <div class="offer-period">Additional 4–6 weeks</div>
+          <p class="offer-deck">Scale the validated pilot into a documented, owner-controlled operating rhythm across research, production, and publishing.</p>
+        </div>
+        <div class="offer-section-title">Expansion includes</div>
+        <ul class="offer-list">
+          <li>Daily intelligence brief</li>
+          <li>Weekly content council</li>
+          <li>Full research-to-script workflow</li>
+          <li>Asset-generation handoffs</li>
+          <li>Publish checklist and owner approval process</li>
+          <li>Workflow documentation, handover, and training</li>
+          <li>Initial optimization cycle</li>
+        </ul>
+        <div class="upgrade-box"><strong>Upgrade incentive</strong><br>Continue within 30 days of the pilot review and receive a $950 USD credit toward the full build.</div>
+        <div class="investment-box" aria-label="Continuing investment calculation">
+          <div class="investment-row"><span>Pilot</span><span>$1,850 USD</span></div>
+          <div class="investment-row"><span>Full build</span><span>$6,500 USD</span></div>
+          <div class="investment-row credit"><span>Upgrade credit</span><span>–$950 USD</span></div>
+          <div class="investment-total"><span>Total investment when continuing</span><strong>$7,400 USD</strong></div>
+        </div>
+      </article>
+    </div>
+    <div class="support-card">
+      <div>
+        <h3>Optimization &amp; support</h3>
+        <div class="support-price">$750 <span>USD/month for the first 3 months</span></div>
+        <p>Then: <strong>$1,250 USD/month</strong> for active optimization and workflow support.</p>
+        <p class="support-boundary"><strong>Software and AI/API subscriptions are separate and paid directly by the owner.</strong></p>
+      </div>
+      <ul class="support-list">
+        <li>Workflow monitoring and fixes</li>
+        <li>Weekly planning/optimization call</li>
+        <li>Prompt and automation improvements</li>
+        <li>Performance review</li>
+        <li>Documentation updates</li>
+      </ul>
+    </div>
+    <div class="pilot-why"><strong>Why start here:</strong> The pilot is designed to earn the right to scale. It lowers the upfront commitment, creates a usable production asset quickly, and lets the owner judge quality, time saved, and audience response before expanding the system.</div>
+  </section>
 
   <section class="section" id="shortcuts">
 
