@@ -155,6 +155,13 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
 .footer{border-top:1px solid var(--line);margin-top:2rem;padding:1.3rem 0;color:var(--muted);font-size:.84rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 @media (max-width:1100px){.hero-inner{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.shortcut-grid{grid-template-columns:repeat(2,1fr)}.library-layout{grid-template-columns:1fr}.file-panel{position:relative;top:auto;max-height:520px}.viewer-panel{min-height:auto}}
 @media (max-width:680px){.shell{padding-inline:.8rem}.toolbar{margin-inline:-.8rem;padding-inline:.8rem}.toolbar-inner{align-items:flex-start;flex-direction:column}.nav-links{justify-content:flex-start}.stats{grid-template-columns:repeat(2,1fr)}.shortcut-grid{grid-template-columns:1fr}.viewer-top{grid-template-columns:1fr}.viewer-actions{justify-content:flex-start}.file-detail-grid{grid-template-columns:1fr}h1{max-width:unset}}
+
+/* Owner business-case layer */
+.hero h1{max-width:12ch}.hero-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.35rem}.hero-actions a{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:.7rem 1rem;font-weight:750;text-decoration:none}.hero-actions .primary-cta{background:var(--amber);color:var(--night)}.hero-actions .secondary-cta{border:1px solid var(--line-strong);color:var(--bone);background:rgba(243,234,219,.06)}
+.summary-band{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem;margin:1.25rem 0}.summary-card,.value-card,.qa-card,.roadmap-card,.evidence-card,.cost-card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(53,40,29,.88),rgba(32,24,18,.84));padding:clamp(1rem,2.5vw,1.5rem);box-shadow:var(--shadow)}.summary-card p,.qa-card p,.value-card p,.roadmap-card p,.evidence-card p,.cost-card p{color:var(--bone-soft);margin:.45rem 0 0}.summary-card h3,.qa-card h3,.value-card h3,.roadmap-card h3,.evidence-card h3,.cost-card h3{font-family:var(--serif);font-size:1.3rem;line-height:1.1;margin:0;color:var(--bone)}
+.check-list{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.55rem}.check-list li{display:flex;gap:.65rem;color:var(--bone-soft)}.check-list li::before{content:'✓';color:var(--sage);font-weight:900}.value-grid,.qa-grid,.evidence-grid,.cost-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}.value-card .number{font:700 .75rem var(--mono);letter-spacing:.12em;color:var(--amber);text-transform:uppercase;margin-bottom:.7rem}.qa-card{position:relative;overflow:hidden}.qa-card::after{content:'?';position:absolute;right:1rem;top:-.6rem;font:800 5rem var(--serif);color:rgba(232,169,66,.10)}
+.roadmap{display:grid;grid-template-columns:repeat(6,1fr);gap:.65rem}.roadmap-card{padding:1rem;min-height:176px}.week{font:700 .7rem var(--mono);letter-spacing:.12em;color:var(--amber);text-transform:uppercase}.roadmap-card h3{font-size:1.05rem;margin-top:.55rem}.roadmap-card p{font-size:.84rem}.evidence-card .metric{font:800 clamp(1.65rem,3vw,2.45rem) var(--serif);color:var(--amber);letter-spacing:-.04em}.evidence-card .metric-label{font:700 .82rem var(--mono);color:var(--bone);margin-top:.15rem}.cost-card.featured{border-color:rgba(232,169,66,.55);background:linear-gradient(145deg,rgba(100,68,29,.46),rgba(43,33,24,.9))}.cost-card .price{font:800 2rem var(--serif);color:var(--amber);margin:.45rem 0}.cost-card small{color:var(--muted)}.risk-note{border-left:3px solid var(--sage);padding:.7rem .9rem;background:rgba(148,167,126,.09);color:var(--bone-soft);border-radius:0 10px 10px 0;margin-top:1rem}
+@media(max-width:1100px){.roadmap{grid-template-columns:repeat(3,1fr)}}@media(max-width:680px){.summary-band,.value-grid,.qa-grid,.evidence-grid,.cost-grid,.roadmap{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -162,9 +169,10 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
   <div class="toolbar-inner">
     <div class="brand-mini"><div class="brand-mark">AH</div><div class="brand-text">Ancestral Healing Owner Portal</div></div>
     <nav class="nav-links">
-      <a href="#overview">Overview</a>
-      <a href="#shortcuts">Shortcuts</a>
-      <a href="#library">File Library</a>
+      <a href="#business-case">Business case</a>
+      <a href="#rollout">Rollout</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#library">Source proof</a>
       <a href="NETLIFY-DEPLOY.md" target="_blank" rel="noopener">Deploy Notes</a>
     </nav>
   </div>
@@ -173,40 +181,55 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
 <header class="hero shell">
   <div class="hero-inner">
     <div>
-      <p class="eyebrow">Private static knowledge base</p>
-      <h1>Owner <span>Portal</span></h1>
-      <p class="lede">A Netlify-ready HTML front door for the full Ancestral Healing repository. Search every shipped file, preview dashboards and PDFs, and read markdown documents without leaving the browser.</p>
+      <p class="eyebrow">A practical growth system for Ancestral Healing</p>
+      <h1>Turn the archive into a <span>repeatable channel engine.</span></h1>
+      <p class="lede">This is an owner-ready operating system: a curated knowledge base, a read on what the audience already rewards, and a human-approved workflow that makes high-quality health content easier to ship.</p>
+      <div class="hero-actions"><a class="primary-cta" href="#business-case">See the business case</a><a class="secondary-cta" href="#library">Inspect the source proof ↓</a></div>
     </div>
-    <aside class="hero-card" aria-label="Netlify deploy instructions">
-      <div class="deploy-title"><span class="dot"></span><span>Ready for Netlify drag-and-drop</span></div>
-      <p class="deploy-copy">The deployment zip keeps the repo structure intact and places this <code>index.html</code> at the root, so Netlify can serve it immediately with no build step.</p>
-      <ol class="deploy-steps">
-        <li>Open Netlify and choose <strong>Add new site → Deploy manually</strong>.</li>
-        <li>Drop <strong>ancestral-healing-netlify-drop.zip</strong> into the upload area.</li>
-        <li>Open the generated Netlify URL and use this portal as the owner's home base.</li>
-      </ol>
+    <aside class="hero-card" aria-label="Owner outcome">
+      <div class="deploy-title"><span class="dot"></span><span>Designed to protect owner control</span></div>
+      <p class="deploy-copy">The goal is not blind automation. It is a dependable editorial pipeline: evidence in, better concepts and scripts out, with a human approval gate before anything publishes.</p>
+      <ol class="deploy-steps"><li>Use the existing audience signals to prioritize topics.</li><li>Turn source material into fact-checked scripts and assets.</li><li>Keep final editorial judgment, voice, and publishing approval with the owner.</li></ol>
     </aside>
   </div>
 </header>
 
 <main class="shell">
-  <section class="section" id="overview">
-    <div class="section-head">
-      <div>
-        <div class="section-kicker">Repository overview</div>
-        <h2>Everything shipped in one static site.</h2>
-        <p class="section-sub">Counts are loaded from <code>site-manifest.json</code>, generated from the repository files included in the deploy zip.</p>
-      </div>
-    </div>
+  <section class="section" id="business-case">
+    <div class="section-head"><div><div class="section-kicker">Executive summary</div><h2>A channel asset, not another pile of documents.</h2><p class="section-sub">The workspace combines strategy, source material, workflow design, and a browser-based owner portal so the next six weeks can move from insight to a controlled publishing rhythm.</p></div></div>
     <div class="stats" id="stats" aria-live="polite"></div>
+    <div class="summary-band"><div class="summary-card"><h3>The opportunity</h3><p>Ancestral Healing already has an audience of roughly <strong>29.6k subscribers</strong> and a content library with genuine raw material. Analytics point toward a clearer editorial bet: long-form carnivore and animal-based content, supported by rigorous nutrition sources and more compelling hooks for light/circadian topics.</p></div><div class="summary-card"><h3>The operating promise</h3><ul class="check-list"><li>Reduce human effort per video from 10–15 hours toward 3–4.</li><li>Keep the owner as the final editorial and publishing authority.</li><li>Use guidelines and fact checks to lower health-claim risk.</li><li>Make every recommendation traceable to source files below.</li></ul></div></div>
   </section>
 
+  <section class="section" id="owner-answers"><div class="section-head"><div><div class="section-kicker">Owner questions, answered</div><h2>What are we actually buying ourselves?</h2></div></div><div class="qa-grid">
+    <article class="qa-card"><h3>What did we build?</h3><p>An AH Brain knowledge base, channel analytics, an autopilot/workflow plan, this Netlify owner portal, and a searchable source explorer. Each layer is usable on its own; together they turn a scattered archive into an operating system.</p></article>
+    <article class="qa-card"><h3>What workflow does it create?</h3><p>A daily intelligence brief and weekly content council feed fact-checking and script-writing skills, asset generation, and a publish checklist—with human approval before release. A six-week rollout makes the change manageable.</p></article>
+    <article class="qa-card"><h3>Why can this work?</h3><p>The channel has an existing base, analytics show carnivore/animal-based themes work, and 20+ minute videos perform best. Strong nutrition documentation supplies depth; circadian/light material has a repackaging opportunity through stronger hooks.</p></article>
+    <article class="qa-card"><h3>What does it cost?</h3><p>Plan for 15–25 setup hours over six weeks. Monthly tooling can start at about $92–155 to validate, with a recommended standard scenario around $283 and an aggressive scale scenario around $695.</p></article>
+  </div></section>
+
+  <section class="section"><div class="section-head"><div><div class="section-kicker">Four layers of value</div><h2>What exists now—and how it compounds.</h2></div></div><div class="value-grid">
+    <article class="value-card"><div class="number">01 · Foundation</div><h3>AH Brain</h3><p>Organized nutrition, circadian/light, non-toxic lifestyle, and content strategy material—plus original source PDFs for grounding claims.</p></article>
+    <article class="value-card"><div class="number">02 · Direction</div><h3>Channel intelligence</h3><p>Performance analysis turns historical audience behavior into practical format, duration, and topic priorities.</p></article>
+    <article class="value-card"><div class="number">03 · Throughput</div><h3>Autopilot plan</h3><p>Roles, connectors, routines, risk policy, costs, and a roadmap describe how the work moves from research to approved publishing.</p></article>
+    <article class="value-card"><div class="number">04 · Control</div><h3>Owner portal</h3><p>A deployable review surface for the business case and its evidence—not a black box. Browse the complete project at the bottom of this page.</p></article>
+  </div></section>
+
+  <section class="section" id="rollout"><div class="section-head"><div><div class="section-kicker">Six-week workflow & rollout</div><h2>Build the habit before turning up the volume.</h2><p class="section-sub">The automation is deliberately staged so quality, safety, and voice can be tested before scale.</p></div></div><div class="roadmap">
+    <article class="roadmap-card"><div class="week">Week 1</div><h3>Align</h3><p>Confirm voice, claim boundaries, pillars, and approval rules.</p></article><article class="roadmap-card"><div class="week">Week 2</div><h3>Connect</h3><p>Set up the daily intelligence brief and source intake.</p></article><article class="roadmap-card"><div class="week">Week 3</div><h3>Council</h3><p>Run the weekly content council and score ideas against signals.</p></article><article class="roadmap-card"><div class="week">Week 4</div><h3>Produce</h3><p>Test fact-checking, scripting, and asset-generation handoffs.</p></article><article class="roadmap-card"><div class="week">Week 5</div><h3>Publish</h3><p>Use the checklist and owner approval gate on pilot videos.</p></article><article class="roadmap-card"><div class="week">Week 6</div><h3>Review</h3><p>Measure workload, quality, and results; adjust the cadence.</p></article>
+  </div></section>
+
+  <section class="section" id="evidence"><div class="section-head"><div><div class="section-kicker">Evidence & proof</div><h2>The strategy follows the signal already in the channel.</h2><p class="section-sub">These are directional findings from the included analytics work—not promises or medical claims.</p></div></div><div class="evidence-grid"><article class="evidence-card"><div class="metric">~29.6k</div><div class="metric-label">existing subscribers</div><p>A meaningful base already exists; the plan focuses on serving it more consistently and intelligently.</p></article><article class="evidence-card"><div class="metric">20+ min</div><div class="metric-label">best-performing duration</div><p>Long-form gives the channel room to explain nuanced topics and reward depth.</p></article><article class="evidence-card"><div class="metric">Priority</div><div class="metric-label">carnivore / animal-based</div><p>Analytics indicate these topics are the strongest editorial starting point for validation.</p></article><article class="evidence-card"><div class="metric">Reframe</div><div class="metric-label">circadian & light</div><p>Existing material can earn a second life through clearer audience hooks and packaging.</p></article></div><div class="risk-note"><strong>Quality guardrail:</strong> Editorial guidelines and human review are part of the system, specifically to control health-claim risk while retaining useful, source-led storytelling.</div></section>
+
+  <section class="section" id="cost"><div class="section-head"><div><div class="section-kicker">Time & money</div><h2>Validate leanly; scale only after the workflow earns it.</h2></div></div><div class="cost-grid"><article class="cost-card"><h3>Lean validation</h3><div class="price">$92–155<span style="font-size:1rem">/mo</span></div><p>Enough tooling to prove the brief, council, research, and approval loop.</p><small>Best for the first controlled test.</small></article><article class="cost-card featured"><h3>Recommended standard</h3><div class="price">~$283<span style="font-size:1rem">/mo</span></div><p>The balanced operating scenario for a dependable content cadence.</p><small>Recommended after the pilot rhythm works.</small></article><article class="cost-card"><h3>Aggressive scale</h3><div class="price">~$695<span style="font-size:1rem">/mo</span></div><p>Higher capacity when the process, voice, and quality assurance are proven.</p><small>Scale option, not the starting requirement.</small></article><article class="cost-card"><h3>Owner time</h3><div class="price">15–25<span style="font-size:1rem"> hours</span></div><p>Setup investment over six weeks, aiming to reduce human hours per video from 10–15 to 3–4 without surrendering editorial control.</p><small>Final approval remains human.</small></article></div></section>
+
   <section class="section" id="shortcuts">
+
     <div class="section-head">
       <div>
-        <div class="section-kicker">Owner shortcuts</div>
-        <h2>Start with the most useful pages.</h2>
-        <p class="section-sub">Open the repo README, content index, editorial rules, existing dashboards, and reference pages directly from here.</p>
+        <div class="section-kicker">Evidence shortcuts</div>
+        <h2>Go straight to the working documents.</h2>
+        <p class="section-sub">These source files substantiate the plan: strategy, editorial guardrails, analytics, workflow design, and the knowledge base.</p>
       </div>
     </div>
     <div class="shortcut-grid" id="shortcutsGrid"></div>
@@ -215,8 +238,8 @@ h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.0
   <section class="section" id="library">
     <div class="section-head">
       <div>
-        <div class="section-kicker">File library</div>
-        <h2>Browse and read the repo.</h2>
+        <div class="section-kicker">Complete source explorer</div>
+        <h2>Inspect the proof behind the pitch.</h2>
         <p class="section-sub">Markdown files render in the built-in reader. HTML dashboards and PDFs can be previewed or opened in a new tab.</p>
       </div>
     </div>

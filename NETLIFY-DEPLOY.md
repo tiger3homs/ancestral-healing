@@ -1,27 +1,39 @@
 # Netlify Drag-and-Drop Deploy
 
-This repository now includes a static owner portal at `index.html`.
+This repository ships as a no-build static owner portal. The home page is both a business case for the Ancestral Healing workspace and a searchable, browser-based source explorer.
 
 ## Deploy
 
-1. Use the generated zip: `ancestral-healing-netlify-drop.zip`.
-2. In Netlify, go to **Add new site → Deploy manually**.
-3. Drag and drop the zip file into Netlify.
-4. Netlify will serve `index.html` as the home page.
+1. Use the generated `ancestral-healing-netlify-drop.zip` file in this repository.
+2. In Netlify, choose **Add new site → Deploy manually**.
+3. Drag the zip into Netlify’s upload area.
+4. Open the generated URL. Netlify serves root-level `index.html` automatically; no build command or environment variables are required.
 
-No build command is required.
+> Do not upload the project folder and the zip together. Upload the generated zip by itself.
 
-## What is inside
+## What the owner portal includes
 
-- The owner portal: `index.html`
-- The generated file index: `site-manifest.json`
-- All markdown documents, dashboards, PDFs, JSON data, and repo support files
-- Existing pages such as:
-  - `ancestral-healing-kb.html`
-  - `ah-brain/reference/knowledge-base.html`
-  - `ah-analytics/index.html`
-  - `ah-autopilot/index.html`
+- **Business case:** executive summary, owner Q&A, evidence, cost scenarios, and the six-week rollout.
+- **Four workspace layers:** AH Brain knowledge base, channel intelligence, autopilot workflow plan, and owner portal.
+- **Source proof:** shortcut cards plus a searchable and filterable file explorer powered by `site-manifest.json`.
+- **Browser review:** markdown renders in the built-in reader (with a raw mode); HTML and PDFs can be previewed, opened, or downloaded.
 
-## Updating the deploy zip later
+## Deployment contents
 
-If files are added, removed, or renamed, regenerate `site-manifest.json` and rebuild the zip so the portal file browser stays accurate.
+The zip contains all non-Git project files except the final zip itself, including:
+
+- `index.html` — owner pitch and source portal
+- `site-manifest.json` — generated file index used by the explorer
+- `NETLIFY-DEPLOY.md` — these instructions
+- Markdown documentation, dashboards, PDFs, JSON data, and existing project archives
+
+## Updating the deploy package
+
+When project files change:
+
+1. Regenerate `site-manifest.json` from all deploy files, excluding `.git` and `ancestral-healing-netlify-drop.zip`.
+2. Rebuild `ancestral-healing-netlify-drop.zip` with those same files, keeping `index.html` at the archive root.
+3. Validate that the manifest file list/count matches the deploy files, JavaScript in `index.html` parses, and the archive includes `index.html`, `site-manifest.json`, and this file with no `.git` paths.
+4. Deploy the newly generated zip.
+
+The explorer relies on browser `fetch`, so it should be viewed through Netlify (or another static HTTP server), rather than opening `index.html` directly from a local file path.
