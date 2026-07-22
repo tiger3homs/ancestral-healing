@@ -1,0 +1,778 @@
+{
+ "videos_by_topic": [
+  {
+   "key": "carnivore",
+   "n": 39,
+   "median_views": 9200,
+   "mean_views": 12620,
+   "median_ratio": 1.25,
+   "max_views": 71000,
+   "outliers": 7
+  },
+  {
+   "key": "nutrition",
+   "n": 24,
+   "median_views": 5050,
+   "mean_views": 5533,
+   "median_ratio": 0.69,
+   "max_views": 19000,
+   "outliers": 2
+  },
+  {
+   "key": "recipe",
+   "n": 13,
+   "median_views": 3900,
+   "mean_views": 5646,
+   "median_ratio": 0.53,
+   "max_views": 23000,
+   "outliers": 1
+  },
+  {
+   "key": "circadian",
+   "n": 2,
+   "median_views": 3800,
+   "mean_views": 3800,
+   "median_ratio": 0.52,
+   "max_views": 4200,
+   "outliers": 0
+  },
+  {
+   "key": "health",
+   "n": 13,
+   "median_views": 3700,
+   "mean_views": 3692,
+   "median_ratio": 0.5,
+   "max_views": 11000,
+   "outliers": 0
+  },
+  {
+   "key": "other",
+   "n": 14,
+   "median_views": 2700,
+   "mean_views": 4070,
+   "median_ratio": 0.37,
+   "max_views": 13000,
+   "outliers": 0
+  },
+  {
+   "key": "lifestyle",
+   "n": 11,
+   "median_views": 2500,
+   "mean_views": 5545,
+   "median_ratio": 0.34,
+   "max_views": 19000,
+   "outliers": 2
+  },
+  {
+   "key": "toxins",
+   "n": 4,
+   "median_views": 2500,
+   "mean_views": 2900,
+   "median_ratio": 0.34,
+   "max_views": 4600,
+   "outliers": 0
+  }
+ ],
+ "videos_by_hook": [
+  {
+   "key": "how-to",
+   "n": 7,
+   "median_views": 7600,
+   "mean_views": 9685,
+   "median_ratio": 1.03,
+   "max_views": 25000,
+   "outliers": 1
+  },
+  {
+   "key": "contrarian",
+   "n": 11,
+   "median_views": 5700,
+   "mean_views": 12372,
+   "median_ratio": 0.77,
+   "max_views": 71000,
+   "outliers": 2
+  },
+  {
+   "key": "descriptive",
+   "n": 56,
+   "median_views": 5300,
+   "mean_views": 6992,
+   "median_ratio": 0.72,
+   "max_views": 56000,
+   "outliers": 5
+  },
+  {
+   "key": "ALL CAPS",
+   "n": 31,
+   "median_views": 4100,
+   "mean_views": 6335,
+   "median_ratio": 0.56,
+   "max_views": 29000,
+   "outliers": 3
+  },
+  {
+   "key": "listicle",
+   "n": 7,
+   "median_views": 3700,
+   "mean_views": 7957,
+   "median_ratio": 0.5,
+   "max_views": 23000,
+   "outliers": 1
+  },
+  {
+   "key": "question",
+   "n": 8,
+   "median_views": 3100,
+   "mean_views": 4500,
+   "median_ratio": 0.42,
+   "max_views": 10000,
+   "outliers": 0
+  }
+ ],
+ "shorts_by_topic": [
+  {
+   "key": "recipe",
+   "n": 8,
+   "median_views": 3850,
+   "mean_views": 5012,
+   "median_ratio": 0.82,
+   "max_views": 9500,
+   "outliers": 1
+  },
+  {
+   "key": "lifestyle",
+   "n": 4,
+   "median_views": 3300,
+   "mean_views": 3250,
+   "median_ratio": 0.71,
+   "max_views": 4700,
+   "outliers": 0
+  },
+  {
+   "key": "other",
+   "n": 9,
+   "median_views": 3200,
+   "mean_views": 9205,
+   "median_ratio": 0.68,
+   "max_views": 32000,
+   "outliers": 2
+  },
+  {
+   "key": "health",
+   "n": 4,
+   "median_views": 3100,
+   "mean_views": 4400,
+   "median_ratio": 0.66,
+   "max_views": 9700,
+   "outliers": 1
+  },
+  {
+   "key": "carnivore",
+   "n": 3,
+   "median_views": 2800,
+   "mean_views": 2700,
+   "median_ratio": 0.6,
+   "max_views": 3200,
+   "outliers": 0
+  },
+  {
+   "key": "toxins",
+   "n": 2,
+   "median_views": 2650,
+   "mean_views": 2650,
+   "median_ratio": 0.57,
+   "max_views": 2700,
+   "outliers": 0
+  },
+  {
+   "key": "nutrition",
+   "n": 5,
+   "median_views": 2600,
+   "mean_views": 2600,
+   "median_ratio": 0.56,
+   "max_views": 3700,
+   "outliers": 0
+  },
+  {
+   "key": "circadian",
+   "n": 7,
+   "median_views": 1900,
+   "mean_views": 2328,
+   "median_ratio": 0.41,
+   "max_views": 4200,
+   "outliers": 0
+  }
+ ],
+ "top_videos": [
+  {
+   "id": "z-kLYxqzIZ8",
+   "title": "CARNIVORE DIET: 5 Things That No One Talks About",
+   "duration": 1677,
+   "viewCount": 71000,
+   "statistics": {
+    "averageViewsRatio": 9.6425,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "contrarian",
+   "ratio": 9.6425,
+   "dur": 1677,
+   "bucket": "e. 20+ min"
+  },
+  {
+   "id": "HxAu8vtQZL4",
+   "title": "I Eat Burgers with EVERY Meal | CARNIVORE DIET",
+   "duration": 1352,
+   "viewCount": 56000,
+   "statistics": {
+    "averageViewsRatio": 7.6053,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "descriptive",
+   "ratio": 7.6053,
+   "dur": 1352,
+   "bucket": "e. 20+ min"
+  },
+  {
+   "id": "PQn2lAlNOUg",
+   "title": "5 REASONS WHY CARNIVORE MAY NOT BE WORKING",
+   "duration": 663,
+   "viewCount": 29000,
+   "statistics": {
+    "averageViewsRatio": 3.9385,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "ALL CAPS",
+   "ratio": 3.9385,
+   "dur": 663,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "TwbfCFC81hM",
+   "title": "Carnivore Tortillas - How To Make Zero Carb Tortillas - Keto Carnivore",
+   "duration": 831,
+   "viewCount": 25000,
+   "statistics": {
+    "averageViewsRatio": 3.3952,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "how-to",
+   "ratio": 3.3952,
+   "dur": 831,
+   "bucket": "d. 12-20 min"
+  },
+  {
+   "id": "UpuwIfCFqk8",
+   "title": "1 Minute Microwave Cheesecake Recipe | Keto | Low Carb | Sugar Free | Gluten Free",
+   "duration": 656,
+   "viewCount": 23000,
+   "statistics": {
+    "averageViewsRatio": 3.1236,
+    "isPositiveOutlier": true
+   },
+   "topic": "recipe",
+   "hook": "listicle",
+   "ratio": 3.1236,
+   "dur": 656,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "GtGqkF748CI",
+   "title": "WHAT I EAT IN A WEEK | BUDGET | ANIMAL BASED",
+   "duration": 687,
+   "viewCount": 19000,
+   "statistics": {
+    "averageViewsRatio": 2.5804,
+    "isPositiveOutlier": true
+   },
+   "topic": "nutrition",
+   "hook": "ALL CAPS",
+   "ratio": 2.5804,
+   "dur": 687,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "1_mquWM4sT8",
+   "title": "I Quit Sugar For An Entire 3 Years - How My Life Changed",
+   "duration": 1553,
+   "viewCount": 19000,
+   "statistics": {
+    "averageViewsRatio": 2.5804,
+    "isPositiveOutlier": true
+   },
+   "topic": "lifestyle",
+   "hook": "descriptive",
+   "ratio": 2.5804,
+   "dur": 1553,
+   "bucket": "e. 20+ min"
+  },
+  {
+   "id": "q61SmrAn5zY",
+   "title": "First Month on Carnivore Diet | WHAT TO EXPECT",
+   "duration": 791,
+   "viewCount": 18000,
+   "statistics": {
+    "averageViewsRatio": 2.4446,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "descriptive",
+   "ratio": 2.4446,
+   "dur": 791,
+   "bucket": "d. 12-20 min"
+  },
+  {
+   "id": "RrsdbrrC614",
+   "title": "Eating Dairy on Carnivore | THE TRUTH ABOUT DAIRY",
+   "duration": 548,
+   "viewCount": 17000,
+   "statistics": {
+    "averageViewsRatio": 2.3088,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "contrarian",
+   "ratio": 2.3088,
+   "dur": 548,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "lL7MlTUbgaU",
+   "title": "Healing AUTOIMMUNE Conditions with Carnivore Diet | Psoriasis and Eczema 2022",
+   "duration": 542,
+   "viewCount": 17000,
+   "statistics": {
+    "averageViewsRatio": 2.3088,
+    "isPositiveOutlier": true
+   },
+   "topic": "carnivore",
+   "hook": "descriptive",
+   "ratio": 2.3088,
+   "dur": 542,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "ZuMovYdjHkE",
+   "title": "Benefits of QUITTING COFFEE! And Side Effects After 30 Days",
+   "duration": 777,
+   "viewCount": 16000,
+   "statistics": {
+    "averageViewsRatio": 2.173,
+    "isPositiveOutlier": true
+   },
+   "topic": "lifestyle",
+   "hook": "descriptive",
+   "ratio": 2.173,
+   "dur": 777,
+   "bucket": "d. 12-20 min"
+  },
+  {
+   "id": "donAfJvjzcM",
+   "title": "9 WAYS TO ADD MORE FAT ON AN ANIMAL BASED DIET",
+   "duration": 489,
+   "viewCount": 15000,
+   "statistics": {
+    "averageViewsRatio": 2.0371,
+    "isPositiveOutlier": true
+   },
+   "topic": "nutrition",
+   "hook": "ALL CAPS",
+   "ratio": 2.0371,
+   "dur": 489,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "joFN4FN0QKg",
+   "title": "3 FAST Carnivore Food Options + MORE",
+   "duration": 729,
+   "viewCount": 14000,
+   "statistics": {
+    "averageViewsRatio": 1.9013,
+    "isPositiveOutlier": false
+   },
+   "topic": "carnivore",
+   "hook": "listicle",
+   "ratio": 1.9013,
+   "dur": 729,
+   "bucket": "d. 12-20 min"
+  },
+  {
+   "id": "fQuQJgSdPlc",
+   "title": "What I Eat in a Day Part 3 | CARNIVORE DIET",
+   "duration": 405,
+   "viewCount": 14000,
+   "statistics": {
+    "averageViewsRatio": 1.9013,
+    "isPositiveOutlier": false
+   },
+   "topic": "carnivore",
+   "hook": "descriptive",
+   "ratio": 1.9013,
+   "dur": 405,
+   "bucket": "b. 5-8 min"
+  },
+  {
+   "id": "SGMICE__6ck",
+   "title": "Why I No Longer Do Extended Fasting",
+   "duration": 403,
+   "viewCount": 13000,
+   "statistics": {
+    "averageViewsRatio": 1.7655,
+    "isPositiveOutlier": false
+   },
+   "topic": "other",
+   "hook": "descriptive",
+   "ratio": 1.7655,
+   "dur": 403,
+   "bucket": "b. 5-8 min"
+  }
+ ],
+ "bottom_videos": [
+  {
+   "id": "X4-9ObSbe30",
+   "title": "What to Ask Your Farmer",
+   "duration": 456,
+   "viewCount": 890,
+   "statistics": {
+    "averageViewsRatio": 0.1209,
+    "isPositiveOutlier": false
+   },
+   "topic": "other",
+   "hook": "descriptive",
+   "ratio": 0.1209,
+   "dur": 456,
+   "bucket": "b. 5-8 min"
+  },
+  {
+   "id": "Vq--LTO8RXM",
+   "title": "Normal and Abnormal Period Symptoms",
+   "duration": 537,
+   "viewCount": 1100,
+   "statistics": {
+    "averageViewsRatio": 0.1494,
+    "isPositiveOutlier": false
+   },
+   "topic": "health",
+   "hook": "descriptive",
+   "ratio": 0.1494,
+   "dur": 537,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "Qecy2bOTK5Y",
+   "title": "9 Ways To Connect With Your Ancestors Through Food",
+   "duration": 690,
+   "viewCount": 1100,
+   "statistics": {
+    "averageViewsRatio": 0.1494,
+    "isPositiveOutlier": false
+   },
+   "topic": "other",
+   "hook": "listicle",
+   "ratio": 0.1494,
+   "dur": 690,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "EF2OTaH-KpM",
+   "title": "THE BIGGEST ACHIEVEMENT OF 2022",
+   "duration": 512,
+   "viewCount": 1300,
+   "statistics": {
+    "averageViewsRatio": 0.1766,
+    "isPositiveOutlier": false
+   },
+   "topic": "lifestyle",
+   "hook": "ALL CAPS",
+   "ratio": 0.1766,
+   "dur": 512,
+   "bucket": "c. 8-12 min"
+  },
+  {
+   "id": "6-XgiyzOSKk",
+   "title": "Counting Calories and Weight Loss",
+   "duration": 292,
+   "viewCount": 1300,
+   "statistics": {
+    "averageViewsRatio": 0.1766,
+    "isPositiveOutlier": false
+   },
+   "topic": "other",
+   "hook": "descriptive",
+   "ratio": 0.1766,
+   "dur": 292,
+   "bucket": "a. <5 min"
+  },
+  {
+   "id": "wHEhehov7DY",
+   "title": "Celiac Disease and Gluten Sensitivity",
+   "duration": 320,
+   "viewCount": 1400,
+   "statistics": {
+    "averageViewsRatio": 0.1901,
+    "isPositiveOutlier": false
+   },
+   "topic": "health",
+   "hook": "descriptive",
+   "ratio": 0.1901,
+   "dur": 320,
+   "bucket": "b. 5-8 min"
+  },
+  {
+   "id": "ShFoGB6BvPE",
+   "title": "Rediscover Ancestral Nutrition For Lasting Health and Wellbeing",
+   "duration": 220,
+   "viewCount": 1500,
+   "statistics": {
+    "averageViewsRatio": 0.2037,
+    "isPositiveOutlier": false
+   },
+   "topic": "nutrition",
+   "hook": "descriptive",
+   "ratio": 0.2037,
+   "dur": 220,
+   "bucket": "a. <5 min"
+  },
+  {
+   "id": "DzuBJU6geU0",
+   "title": "Are Plant-Based Milks Healthy?",
+   "duration": 807,
+   "viewCount": 1500,
+   "statistics": {
+    "averageViewsRatio": 0.2037,
+    "isPositiveOutlier": false
+   },
+   "topic": "nutrition",
+   "hook": "question",
+   "ratio": 0.2037,
+   "dur": 807,
+   "bucket": "d. 12-20 min"
+  },
+  {
+   "id": "4J_B1xLGcRs",
+   "title": "A Guide to Ancestral Healing - NEW EBOOK!",
+   "duration": 314,
+   "viewCount": 1600,
+   "statistics": {
+    "averageViewsRatio": 0.2173,
+    "isPositiveOutlier": false
+   },
+   "topic": "health",
+   "hook": "how-to",
+   "ratio": 0.2173,
+   "dur": 314,
+   "bucket": "b. 5-8 min"
+  },
+  {
+   "id": "Rhdk2alexh4",
+   "title": "Is Meat Really Bad for Us?",
+   "duration": 441,
+   "viewCount": 1700,
+   "statistics": {
+    "averageViewsRatio": 0.2309,
+    "isPositiveOutlier": false
+   },
+   "topic": "nutrition",
+   "hook": "question",
+   "ratio": 0.2309,
+   "dur": 441,
+   "bucket": "b. 5-8 min"
+  }
+ ],
+ "top_shorts": [
+  {
+   "id": "LWcuWfn0f84",
+   "title": "No Processed Food in 4 Years!",
+   "viewCount": 32000,
+   "statistics": {
+    "averageViewsRatio": 6.8485,
+    "isPositiveOutlier": true
+   },
+   "topic": "other",
+   "hook": "descriptive",
+   "ratio": 6.8485
+  },
+  {
+   "id": "VycxdkeV4lc",
+   "title": "THE ALKALINE DIET MYTH",
+   "viewCount": 27000,
+   "statistics": {
+    "averageViewsRatio": 5.7785,
+    "isPositiveOutlier": true
+   },
+   "topic": "other",
+   "hook": "ALL CAPS",
+   "ratio": 5.7785
+  },
+  {
+   "id": "5Mp4B7l9p1s",
+   "title": "Ancestral Healing Retreat July 2022",
+   "viewCount": 9700,
+   "statistics": {
+    "averageViewsRatio": 2.076,
+    "isPositiveOutlier": true
+   },
+   "topic": "health",
+   "hook": "descriptive",
+   "ratio": 2.076
+  },
+  {
+   "id": "8Jbe1Vhg78U",
+   "title": "Papaya Custard",
+   "viewCount": 9500,
+   "statistics": {
+    "averageViewsRatio": 2.0332,
+    "isPositiveOutlier": true
+   },
+   "topic": "recipe",
+   "hook": "descriptive",
+   "ratio": 2.0332
+  },
+  {
+   "id": "vcn6owsBI7Y",
+   "title": "Unsubscribe From The News",
+   "viewCount": 9300,
+   "statistics": {
+    "averageViewsRatio": 1.9904,
+    "isPositiveOutlier": false
+   },
+   "topic": "other",
+   "hook": "descriptive",
+   "ratio": 1.9904
+  },
+  {
+   "id": "EYXpQG9wFB4",
+   "title": "Epic Breakfast Time",
+   "viewCount": 7700,
+   "statistics": {
+    "averageViewsRatio": 1.6479,
+    "isPositiveOutlier": false
+   },
+   "topic": "recipe",
+   "hook": "descriptive",
+   "ratio": 1.6479
+  },
+  {
+   "id": "0hBWStnHRjs",
+   "title": "Deliciously Healthy Egg Yolk Muffins!",
+   "viewCount": 6600,
+   "statistics": {
+    "averageViewsRatio": 1.4125,
+    "isPositiveOutlier": false
+   },
+   "topic": "recipe",
+   "hook": "descriptive",
+   "ratio": 1.4125
+  },
+  {
+   "id": "gSbU48MxrLg",
+   "title": "BEACH BBQ WITH FRIENDS",
+   "viewCount": 4700,
+   "statistics": {
+    "averageViewsRatio": 1.0059,
+    "isPositiveOutlier": false
+   },
+   "topic": "lifestyle",
+   "hook": "ALL CAPS",
+   "ratio": 1.0059
+  },
+  {
+   "id": "JQYIWmh3sI0",
+   "title": "Animal Based Ice Cream",
+   "viewCount": 4300,
+   "statistics": {
+    "averageViewsRatio": 0.9203,
+    "isPositiveOutlier": false
+   },
+   "topic": "recipe",
+   "hook": "descriptive",
+   "ratio": 0.9203
+  },
+  {
+   "id": "V3GODwIVbV0",
+   "title": "Avoiding the Sun Linked to Health Problems",
+   "viewCount": 4200,
+   "statistics": {
+    "averageViewsRatio": 0.8989,
+    "isPositiveOutlier": false
+   },
+   "topic": "circadian",
+   "hook": "descriptive",
+   "ratio": 0.8989
+  },
+  {
+   "id": "1pmZQWmMgIk",
+   "title": "Nature Cured My Chronic Pain",
+   "viewCount": 4100,
+   "statistics": {
+    "averageViewsRatio": 0.8775,
+    "isPositiveOutlier": false
+   },
+   "topic": "health",
+   "hook": "descriptive",
+   "ratio": 0.8775
+  },
+  {
+   "id": "Dso4Dwvwz4A",
+   "title": "NEW ANNOUNCEMENT",
+   "viewCount": 4000,
+   "statistics": {
+    "averageViewsRatio": 0.8561,
+    "isPositiveOutlier": false
+   },
+   "topic": "lifestyle",
+   "hook": "ALL CAPS",
+   "ratio": 0.8561
+  }
+ ],
+ "videos_by_duration": [
+  {
+   "key": "a. <5 min",
+   "n": 11,
+   "median_views": 2400,
+   "mean_views": 3490,
+   "median_ratio": 0.33,
+   "max_views": 10000,
+   "outliers": 0
+  },
+  {
+   "key": "b. 5-8 min",
+   "n": 39,
+   "median_views": 5900,
+   "mean_views": 5684,
+   "median_ratio": 0.8,
+   "max_views": 14000,
+   "outliers": 0
+  },
+  {
+   "key": "c. 8-12 min",
+   "n": 41,
+   "median_views": 4600,
+   "mean_views": 6341,
+   "median_ratio": 0.62,
+   "max_views": 29000,
+   "outliers": 6
+  },
+  {
+   "key": "d. 12-20 min",
+   "n": 21,
+   "median_views": 6400,
+   "mean_views": 8109,
+   "median_ratio": 0.87,
+   "max_views": 25000,
+   "outliers": 3
+  },
+  {
+   "key": "e. 20+ min",
+   "n": 8,
+   "median_views": 12500,
+   "mean_views": 24150,
+   "median_ratio": 1.7,
+   "max_views": 71000,
+   "outliers": 3
+  }
+ ]
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AH Autopilot — Build Plan</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{
+  --night:#1a1410;--earth:#241c15;--earth2:#2e241a;
+  --bone:#efe6d6;--bone-dim:#b7ab97;
+  --amber:#e8a942;--ember:#d5622e;--sage:#8fa07a;--sky:#6f93a8;--red:#c2553f;
+  --line:rgba(239,230,214,.13);--line-strong:rgba(239,230,214,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--bone);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--amber);color:var(--night)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1.25rem,5vw,4rem)}
+
+.hero{position:relative;overflow:hidden;padding:clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3rem);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;left:50%;bottom:-50%;transform:translateX(-50%);width:min(120vw,860px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(232,169,66,.26) 0%,rgba(213,98,46,.14) 36%,rgba(213,98,46,0) 64%);pointer-events:none}
+.hero .wrap{position:relative}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.2rem,6.5vw,4rem);line-height:1;letter-spacing:-.02em;margin-bottom:.9rem}
+h1 em{font-style:italic;font-weight:400;color:var(--amber)}
+.lede{color:var(--bone-dim);max-width:60ch;font-size:clamp(1rem,2vw,1.15rem)}
+
+section{padding:clamp(2.5rem,5vw,4rem) 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.8rem}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--amber);padding-top:.35rem}
+h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.05;letter-spacing:-.015em}
+.sub{color:var(--bone-dim);font-size:.92rem;margin-top:.3rem}
+p.body{color:var(--bone-dim);max-width:70ch;margin-bottom:1rem}
+p.body strong{color:var(--bone);font-weight:600}
+
+.alert{background:linear-gradient(135deg,rgba(194,85,63,.14),rgba(213,98,46,.06));border:1px solid rgba(194,85,63,.45);border-left:3px solid var(--red);border-radius:12px;padding:1.5rem 1.7rem;margin:1.5rem 0}
+.alert .t{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem}
+.alert h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin-bottom:.7rem;line-height:1.25}
+.alert p{color:var(--bone-dim);font-size:.93rem;max-width:72ch}
+.alert p+p{margin-top:.7rem}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.col{background:var(--earth);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem}
+.col.go{border-color:rgba(143,160,122,.45)}
+.col.no{border-color:rgba(194,85,63,.42)}
+.col h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.col.go h4{color:var(--sage)} .col.no h4{color:var(--red)}
+.col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.col li{font-size:.87rem;color:var(--bone-dim);padding-left:1.1rem;position:relative}
+.col li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%}
+.col.go li::before{background:var(--sage)} .col.no li::before{background:var(--red)}
+
+.arch{background:var(--earth2);border:1px solid var(--line-strong);border-radius:12px;padding:1.5rem;overflow-x:auto;margin:1.4rem 0}
+.arch pre{font-family:'IBM Plex Mono',monospace;font-size:.72rem;line-height:1.55;color:var(--bone-dim);white-space:pre}
+.arch pre b{color:var(--amber);font-weight:500}
+.arch pre i{color:var(--red);font-style:normal;font-weight:600}
+
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.6rem}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);padding:.6rem .8rem;border-bottom:1px solid var(--line-strong);font-weight:500}
+td{padding:.62rem .8rem;border-bottom:1px solid var(--line);color:var(--bone-dim)}
+td.hi{color:var(--bone);font-weight:500}
+tr:hover td{background:rgba(239,230,214,.03)}
+.chk{color:var(--sage)} .cross{color:var(--red)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.card{background:var(--earth);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem;position:relative}
+.card.rec{border-color:var(--amber);box-shadow:0 0 0 1px rgba(232,169,66,.14)}
+.card .tag{position:absolute;top:-9px;right:1rem;background:var(--amber);color:var(--night);font-family:'IBM Plex Mono',monospace;font-size:.6rem;padding:.15rem .5rem;border-radius:20px;letter-spacing:.08em}
+.card h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin-bottom:.3rem}
+.card .price{font-family:'Fraunces',serif;font-weight:900;font-size:2rem;color:var(--amber);line-height:1;margin:.6rem 0 .2rem}
+.card .per{font-size:.72rem;color:var(--bone-dim)}
+.card .out{font-size:.84rem;color:var(--bone-dim);margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--line)}
+
+.routines{display:flex;flex-direction:column;gap:.6rem}
+.r{display:grid;grid-template-columns:52px 1fr auto;gap:1rem;align-items:center;background:var(--earth);border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem}
+.r .id{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--amber);font-weight:500}
+.r .d b{font-size:.92rem;color:var(--bone);font-weight:600}
+.r .d small{display:block;color:var(--bone-dim);font-size:.79rem;margin-top:.15rem}
+.r .when{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--bone-dim);white-space:nowrap;text-align:right}
+.r.gate{border-color:rgba(194,85,63,.45);background:rgba(194,85,63,.06)}
+.r.gate .id{color:var(--red)}
+
+.weeks{display:flex;flex-direction:column;gap:.5rem}
+.w{display:grid;grid-template-columns:70px 1fr auto;gap:1rem;align-items:center;padding:.8rem 1.1rem;background:var(--earth);border:1px solid var(--line);border-radius:9px}
+.w .n{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--amber)}
+.w .t{font-size:.89rem;color:var(--bone)}
+.w .t small{display:block;color:var(--bone-dim);font-size:.78rem;margin-top:.1rem}
+.w .c{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--bone-dim)}
+
+.note{background:rgba(111,147,168,.08);border:1px solid rgba(111,147,168,.3);border-left:3px solid var(--sky);border-radius:9px;padding:1.1rem 1.3rem;margin-top:1.4rem}
+.note .t{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:.5rem}
+.note p{font-size:.87rem;color:var(--bone-dim);max-width:72ch}
+
+.lesson{background:var(--earth2);border:1px solid var(--line-strong);border-radius:14px;padding:1.5rem 1.7rem;margin-top:1.3rem}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.comp{padding:1rem 1.1rem;border-radius:9px;background:rgba(239,230,214,.04);border:1px solid var(--line)}
+.comp .ttl{font-size:.85rem;color:var(--bone);margin-bottom:.5rem;line-height:1.3}
+.comp .v{font-family:'Fraunces',serif;font-weight:900;font-size:1.7rem}
+.comp.a .v{color:var(--red)} .comp.b .v{color:var(--sage)}
+
+footer{padding:2.5rem 0 3rem;text-align:center}
+@media(max-width:800px){
+ .split,.cards,.compare{grid-template-columns:1fr}
+ .r{grid-template-columns:44px 1fr;gap:.7rem}.r .when{grid-column:2;text-align:left}
+ .w{grid-template-columns:56px 1fr}.w .c{grid-column:2}
+ table{font-size:.79rem}td,th{padding:.5rem .4rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Build Plan · Researched 22 July 2026</div>
+    <h1>AH<br>Autopilot<em>.</em></h1>
+    <p class="lede">Running Ancestral Healing with Claude + MCP connectors — analytics in, scripts out, assets generated, publishing scheduled. And the one part that should stay human.</p>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><div><h2>Before you build</h2><div class="sub">The finding that reshapes this project</div></div></div>
+
+    <div class="alert">
+      <div class="t">⚠ Policy collision</div>
+      <h3>"Fully self-running" is the exact pattern YouTube is enforcing against.</h3>
+      <p>YouTube's inauthentic content policy makes mass-produced, templated content ineligible for monetization — and enforcement now evaluates <strong>channels as a whole</strong>. The stated risk signals are upload frequency, format similarity, lack of commentary, and minimal editing.</p>
+      <p>Read that list against a fully automated pipeline. It maximises all four by default. Thousands of AI channels have already lost monetization this way; the penalty sequence runs warning → 90-day suspension → permanent removal.</p>
+      <p><strong>It is not an AI ban.</strong> YouTube is explicitly tool-agnostic — AI-assisted content with real editorial decisions stays eligible. The line is human judgment, not tooling.</p>
+    </div>
+
+    <p class="body" style="margin-top:2rem"><strong>And your own data agrees.</strong> Your top three videos are lived personal experience and honest admission of difficulty — the one category AI cannot generate. The sharpest evidence:</p>
+
+    <div class="lesson">
+      <div class="compare">
+        <div class="comp a"><div class="ttl">"9 Ways To Connect With Your Ancestors Through Food"</div><div class="v">1,100</div></div>
+        <div class="comp b"><div class="ttl">"9 WAYS TO ADD MORE FAT ON AN ANIMAL BASED DIET"</div><div class="v">15,000</div></div>
+      </div>
+      <p class="body" style="margin:1rem 0 0">Same structure. <strong>13× apart.</strong> The variable is lived specificity — which is precisely what a pipeline can't manufacture.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><div><h2>The version that works</h2><div class="sub">Automate everything except the judgment and the face</div></div></div>
+    <div class="split">
+      <div class="col go">
+        <h4>✓ Automate fully</h4>
+        <ul>
+          <li>Analytics pulls and reporting</li>
+          <li>Competitor and trend monitoring</li>
+          <li>Research briefs from the archive</li>
+          <li>First-draft scripts</li>
+          <li>Thumbnails and title variants</li>
+          <li>B-roll generation</li>
+          <li>Metadata, chapters, descriptions</li>
+          <li>Scheduling and comment triage</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>✕ Keep human</h4>
+        <ul>
+          <li>Which topic to make</li>
+          <li>The personal story and opinion</li>
+          <li>Final script approval</li>
+          <li>On-camera delivery</li>
+          <li>Fact-check on contested claims</li>
+          <li>The publish button</li>
+        </ul>
+      </div>
+    </div>
+    <p class="body"><strong>Roughly 80% of the labour, none of the policy exposure</strong> — and it protects the exact quality your best videos are built on. Throughput gain: ~2–3× current output at the same personal time cost.</p>
+
+    <div class="arch">
+<pre>                    ┌──────────────────────────────┐
+                    │      <b>AH BRAIN</b> (Project)      │
+                    │  29 research docs · voice ·  │
+                    │  editorial guidelines        │
+                    └──────────────┬───────────────┘
+                                   │
+   ┌───────────────┐        ┌──────▼───────┐        ┌──────────────────┐
+   │  <b>ANALYTICS</b>    │───────▶│    <b>CLAUDE</b>    │◀───────│   <b>GENERATION</b>     │
+   │  YouTube API  │        │  + Routines  │        │  images · voice  │
+   │  TubeLab      │        │  + Skills    │        │  video · avatar  │
+   └───────────────┘        └──────┬───────┘        └──────────────────┘
+                                   │
+                          ┌────────▼─────────┐
+                          │  <i>⚠ HUMAN GATE</i>    │ ← non-negotiable
+                          │  approve · record │
+                          └────────┬─────────┘
+                                   │
+                          ┌────────▼─────────┐
+                          │  <b>PUBLISH</b>         │
+                          │  + AI disclosure │
+                          └──────────────────┘</pre>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><div><h2>Connectors you need</h2><div class="sub">Minimum viable set, in setup order</div></div></div>
+    <table>
+      <thead><tr><th>#</th><th>Purpose</th><th>Pick</th><th>Cost</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="hi">YouTube analytics</td><td>Windsor MCP → Composio</td><td>Free</td><td>Build</td></tr>
+        <tr><td>2</td><td class="hi">YouTube write / upload</td><td>Composio, OAuth write scope</td><td>Free → paid</td><td>Build</td></tr>
+        <tr><td>3</td><td class="hi">Competitive intel</td><td>TubeLab</td><td>Credits</td><td class="chk">✓ connected</td></tr>
+        <tr><td>4</td><td class="hi">Images / thumbnails</td><td>CreativeClaw</td><td>~$20</td><td>Build</td></tr>
+        <tr><td>5</td><td class="hi">Voice</td><td>ElevenLabs MCP (official)</td><td>~$22</td><td>Build</td></tr>
+        <tr><td>6</td><td class="hi">Video / avatar</td><td>HeyGen MCP (official)</td><td>~$29</td><td>Phase 3</td></tr>
+        <tr><td>7</td><td class="hi">Archive + triggers</td><td>GitHub</td><td>Free</td><td class="chk">✓ repo ready</td></tr>
+        <tr><td>8</td><td class="hi">Asset storage</td><td>Google Drive</td><td>~$0</td><td>Build</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="t">The catch on YouTube</div>
+      <p>There is no one-click YouTube connector in Claude's directory. It takes a custom MCP server and a paid plan. Start with Windsor for analytics (free, 60-second setup), add Composio when you need write access. Watch the Data API quota — 10,000 units/day, and search calls cost 100 units each against 1 for a channel listing.</p>
+    </div>
+
+    <p class="body" style="margin-top:1.8rem"><strong>Plus four custom skills you write yourself</strong> — these are not connectors, and they're where the actual value lives: <code>ah-script-writer</code>, <code>ah-thumbnail</code>, <code>ah-metadata</code>, and <code>ah-factcheck</code>. That last one is the difference between a pipeline that scales your voice and one that scales your liability.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><div><h2>The six routines</h2><div class="sub">Claude Code Routines run in Anthropic's cloud · 5–25 runs/day by plan tier</div></div></div>
+    <div class="routines">
+      <div class="r"><span class="id">R1</span><span class="d"><b>Morning Intelligence Brief</b><small>Yesterday's performance, competitor uploads, emerging topics — under 300 words</small></span><span class="when">Daily 07:00</span></div>
+      <div class="r"><span class="id">R2</span><span class="d"><b>Weekly Content Council</b><small>Cross-references archive against demand, proposes 3 concepts with predicted tier</small></span><span class="when">Mon 09:00</span></div>
+      <div class="r"><span class="id">R3</span><span class="d"><b>Script Draft</b><small>Drafts in AH voice; leaves <code>[HOST]</code> blocks empty — never invents your stories</small></span><span class="when">On demand</span></div>
+      <div class="r"><span class="id">R4</span><span class="d"><b>Asset Generation</b><small>3 thumbnails, 5 titles, B-roll, chapters, description</small></span><span class="when">On PR merge</span></div>
+      <div class="r gate"><span class="id">R5</span><span class="d"><b>Publish Checklist ⚠</b><small>Disclosure, claim attribution, disclaimer, title rules — outputs checklist, never uploads</small></span><span class="when">Manual only</span></div>
+      <div class="r"><span class="id">R6</span><span class="d"><b>Comment Triage</b><small>Categorises and drafts replies — never posts</small></span><span class="when">Daily 18:00</span></div>
+    </div>
+
+    <div class="note">
+      <div class="t">Design constraint</div>
+      <p>Routines don't remember previous runs — each starts fresh. Persist state to GitHub or Supabase. The feature is also in research preview, so expect breakage and keep manual fallbacks.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><div><h2>What it costs</h2><div class="sub">Monthly, researched July 2026</div></div></div>
+    <div class="cards">
+      <div class="card">
+        <h4>Lean</h4>
+        <div class="price">$92</div><div class="per">per month</div>
+        <div class="out">4 long + 8 shorts<br>Claude Pro · Wan 2.6<br><strong style="color:var(--sage)">Start here</strong></div>
+      </div>
+      <div class="card rec">
+        <span class="tag">RECOMMENDED</span>
+        <h4>Standard</h4>
+        <div class="price">$283</div><div class="per">per month · ~$14/piece</div>
+        <div class="out">8 long + 12 shorts<br>Claude Max 5× · Kling 3.0<br>Full connector stack</div>
+      </div>
+      <div class="card">
+        <h4>Aggressive</h4>
+        <div class="price">$695</div><div class="per">per month</div>
+        <div class="out">12 long + 20 shorts<br>Max 20× · Veo 3.1 Fast<br><strong style="color:var(--red)">Policy risk at this volume</strong></div>
+      </div>
+    </div>
+
+    <p class="body" style="margin-top:2rem"><strong>Break-even is roughly 57,000 views/month</strong> at a $5 RPM against Standard costs. At your current median that's ~42,000 from 8 long-form — so ad revenue alone doesn't cover it.</p>
+    <p class="body">Which is the argument for quality over volume: <strong>one video at 71,000 views beats thirteen at 5,300, and costs less to make.</strong> The archive already holds three lead magnets and an ebook — a $27 guide converting at 1% of 100,000 views is $27,000, which dominates anything RPM does.</p>
+
+    <div class="note">
+      <div class="t">Billing trap worth knowing</div>
+      <p>If an <code>ANTHROPIC_API_KEY</code> is set in your environment, Claude Code silently bills the API instead of your subscription — you pay twice while the plan sits unused. Check your shell profile before subscribing.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><div><h2>Six weeks</h2><div class="sub">Each week ships something usable; stop at any point without waste</div></div></div>
+    <div class="weeks">
+      <div class="w"><span class="n">Week 0</span><span class="t">Verify before building<small>Confirm publishing status · export Studio retention + CTR · top up TubeLab</small></span><span class="c">$0</span></div>
+      <div class="w"><span class="n">Week 1</span><span class="t">Intelligence layer<small>Windsor MCP · AH Brain Project · R1 running daily</small></span><span class="c">$20</span></div>
+      <div class="w"><span class="n">Week 2</span><span class="t">The two skills that matter<small>ah-factcheck + ah-script-writer, tested against existing scripts</small></span><span class="c">$20</span></div>
+      <div class="w"><span class="n">Week 3</span><span class="t">Voice and images<small>Clone voice · thumbnails · one video end-to-end</small></span><span class="c">$65</span></div>
+      <div class="w"><span class="n">Week 4</span><span class="t">Assets and publishing<small>Composio write scope · R4 + R5 · spend caps set</small></span><span class="c">$100</span></div>
+      <div class="w"><span class="n">Week 5</span><span class="t">Close the loop<small>R6 · publish 2 through pipeline · measure real hours</small></span><span class="c">$150</span></div>
+      <div class="w"><span class="n">Week 6</span><span class="t">Decide<small>Still your voice? Scale, hold, or roll back</small></span><span class="c">$150</span></div>
+    </div>
+
+    <p class="body" style="margin-top:2rem"><strong>First three videos to make:</strong> raw milk / dairy (your 2.31× outlier topic, research doc unused) → the seed-oil documentary (4 chapters written, 20+ min returns 1.70×) → a bridged circadian test ("I Watched The Sunrise Every Day For 30 Days"). All three need the archive <em>and</em> need you. That's the design working.</p>
+
+    <div class="alert" style="margin-top:2rem">
+      <div class="t">Stop conditions</div>
+      <p>Roll back if: scripts stop sounding like you · you're rubber-stamping the gate rather than reading · costs exceed 2× projection twice running · any YouTube policy warning · <strong>performance drops below your historical median for 3+ consecutive videos.</strong></p>
+      <p>That last one matters most. If AI-assisted videos underperform your manual ones, the pipeline subtracts value no matter how much time it saves.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.15em;color:var(--amber)">AH AUTOPILOT · BUILD PLAN · RESEARCHED 22 JULY 2026</div>
+    <p style="color:var(--bone-dim);font-size:.78rem;margin-top:.8rem;max-width:56ch;margin-left:auto;margin-right:auto">Pricing and platform policy move fast — re-verify before committing spend. Sources cited in the accompanying markdown files.</p>
+  </div>
+</footer>
+
+</body>
+</html>

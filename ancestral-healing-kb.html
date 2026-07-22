@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancestral Healing — Knowledge Base</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --night:#1a1410;      /* pre-dawn ground */
+    --earth:#241c15;      /* raised panels */
+    --earth2:#2e241a;
+    --bone:#efe6d6;       /* primary text */
+    --bone-dim:#b7ab97;   /* secondary text */
+    --amber:#e8a942;      /* sunrise accent */
+    --ember:#d5622e;      /* terracotta warm */
+    --sage:#8fa07a;       /* plant / regenerative */
+    --sky:#6f93a8;        /* light / circadian */
+    --line:rgba(239,230,214,.13);
+    --line-strong:rgba(239,230,214,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--night);
+    color:var(--bone);
+    font-family:'Inter',sans-serif;
+    font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--amber);color:var(--night)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:clamp(3rem,7vw,6rem) clamp(1.25rem,5vw,5rem) clamp(2.5rem,5vw,4rem);
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{ /* the rising sun */
+    content:"";position:absolute;
+    left:50%;bottom:-46%;transform:translateX(-50%);
+    width:min(120vw,900px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%,
+       rgba(232,169,66,.30) 0%,
+       rgba(213,98,46,.16) 34%,
+       rgba(213,98,46,0) 62%);
+    filter:blur(4px);pointer-events:none;
+  }
+  .hero-inner{position:relative;max-width:1000px;margin:0 auto}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--amber);margin-bottom:1.4rem;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:900;font-optical-sizing:auto;
+    font-size:clamp(2.8rem,9vw,6rem);line-height:.94;letter-spacing:-.02em;
+    margin-bottom:1.2rem;
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--amber)}
+  .hero p.lede{
+    font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--bone-dim);
+    max-width:56ch;line-height:1.5;
+  }
+  .hero .meta{
+    display:flex;flex-wrap:wrap;gap:1.6rem;margin-top:2.4rem;
+    font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--bone-dim);
+  }
+  .hero .meta b{color:var(--bone);font-weight:500}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(1.25rem,5vw,5rem)}
+  section{padding:clamp(3rem,6vw,5rem) 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.2rem}
+  .sec-num{
+    font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--amber);
+    padding-top:.4rem;
+  }
+  .sec-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.6rem);
+    letter-spacing:-.015em;line-height:1.05;
+  }
+  .sec-head .sub{color:var(--bone-dim);font-size:.95rem;margin-top:.4rem}
+
+  p.body{color:var(--bone-dim);max-width:68ch;margin-bottom:1rem}
+  p.body strong{color:var(--bone);font-weight:600}
+
+  /* ---------- PILLAR CARDS ---------- */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .pillar{
+    background:var(--earth);border:1px solid var(--line);border-radius:14px;
+    padding:1.6rem 1.5rem;position:relative;overflow:hidden;
+    transition:border-color .25s, transform .25s;
+  }
+  .pillar:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  .pillar .dot{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;margin-bottom:1rem;font-size:1.1rem}
+  .pillar h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin-bottom:.5rem}
+  .pillar p{font-size:.9rem;color:var(--bone-dim);line-height:1.5}
+  .pillar .n{position:absolute;top:1rem;right:1.2rem;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--line-strong)}
+  .p-nutrition .dot{background:rgba(213,98,46,.16);color:var(--ember)}
+  .p-circadian .dot{background:rgba(232,169,66,.16);color:var(--amber)}
+  .p-toxin .dot{background:rgba(143,160,122,.16);color:var(--sage)}
+
+  /* ---------- FILE INVENTORY ---------- */
+  .group{margin-bottom:2rem}
+  .group-label{
+    display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem;
+    font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--bone-dim);
+  }
+  .group-label .tag{padding:.15rem .55rem;border-radius:20px;font-size:.68rem;color:var(--night);font-weight:600}
+  .tag-n{background:var(--ember)} .tag-c{background:var(--amber)} .tag-t{background:var(--sage)} .tag-a{background:var(--sky)} .tag-m{background:var(--bone-dim)}
+  .files{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem}
+  .file{
+    display:flex;gap:.7rem;align-items:flex-start;
+    padding:.7rem .9rem;background:var(--earth);border:1px solid var(--line);
+    border-radius:9px;font-size:.86rem;
+  }
+  .file .ext{
+    font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:500;
+    padding:.18rem .4rem;border-radius:4px;flex-shrink:0;margin-top:.15rem;letter-spacing:.05em;
+  }
+  .ext-doc{background:rgba(111,147,168,.18);color:var(--sky)}
+  .ext-pdf{background:rgba(213,98,46,.18);color:var(--ember)}
+  .file .fname{color:var(--bone);line-height:1.35}
+  .file .fnote{color:var(--bone-dim);font-size:.78rem;display:block;margin-top:.15rem}
+
+  /* ---------- CLAIM LEDGER ---------- */
+  .ledger{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ledger-row{
+    display:grid;grid-template-columns:180px 1fr;gap:1.5rem;
+    padding:1.15rem 1.4rem;border-bottom:1px solid var(--line);align-items:start;
+  }
+  .ledger-row:last-child{border-bottom:none}
+  .ledger-row:nth-child(odd){background:var(--earth)}
+  .ledger-row .k{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;color:var(--bone)}
+  .ledger-row .k span{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.68rem;color:var(--amber);margin-top:.3rem;letter-spacing:.1em}
+  .ledger-row .v{color:var(--bone-dim);font-size:.9rem}
+
+  /* ---------- FIGURES ---------- */
+  .figs{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+  .fig{background:var(--earth);border:1px solid var(--line);border-radius:11px;padding:1.15rem 1.3rem}
+  .fig h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.08rem;margin-bottom:.3rem}
+  .fig .role{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--amber);text-transform:uppercase;margin-bottom:.55rem}
+  .fig p{font-size:.85rem;color:var(--bone-dim);line-height:1.5}
+
+  /* ---------- PRODUCTION ---------- */
+  .prod{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+  .prod-col h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+  ul.clean li{position:relative;padding-left:1.3rem;font-size:.9rem;color:var(--bone-dim)}
+  ul.clean li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--amber)}
+  ul.clean li b{color:var(--bone);font-weight:600}
+
+  /* ---------- QUOTE STRIP ---------- */
+  .voice{
+    background:var(--earth2);border:1px solid var(--line-strong);border-radius:16px;
+    padding:2rem 2.2rem;margin-top:1.5rem;
+  }
+  .voice .label{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+  .voice blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;line-height:1.45;color:var(--bone);margin-bottom:.8rem;padding-left:1.1rem;border-left:2px solid var(--ember)}
+
+  /* ---------- ROUTINE TIMELINE ---------- */
+  .timeline{display:flex;flex-direction:column;gap:0}
+  .tl{display:grid;grid-template-columns:120px 1fr;gap:1.4rem;padding:1rem 0;border-top:1px solid var(--line)}
+  .tl:first-child{border-top:none}
+  .tl .time{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--amber);padding-top:.15rem}
+  .tl .what b{color:var(--bone);font-weight:600;font-family:'Fraunces',serif;font-size:1.02rem}
+  .tl .what p{font-size:.86rem;color:var(--bone-dim);margin-top:.2rem}
+
+  /* ---------- CALLOUT ---------- */
+  .callout{
+    background:linear-gradient(135deg,rgba(213,98,46,.09),rgba(232,169,66,.05));
+    border:1px solid var(--line-strong);border-left:3px solid var(--ember);
+    border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0;
+  }
+  .callout .ttl{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ember);margin-bottom:.5rem}
+  .callout p{font-size:.9rem;color:var(--bone-dim);max-width:70ch}
+
+  /* ---------- STAT BAR ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.4rem}
+  .stat{text-align:left}
+  .stat .num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,5vw,3rem);line-height:1;color:var(--amber)}
+  .stat .lbl{font-size:.8rem;color:var(--bone-dim);margin-top:.4rem}
+
+  footer{padding:3rem clamp(1.25rem,5vw,5rem);text-align:center;color:var(--bone-dim);font-size:.82rem}
+  footer .disc{max-width:60ch;margin:0 auto 1.2rem;font-size:.78rem;line-height:1.5;opacity:.8}
+
+  @media(max-width:720px){
+    .pillars,.files,.figs,.prod,.stats{grid-template-columns:1fr}
+    .ledger-row{grid-template-columns:1fr;gap:.4rem}
+    .tl{grid-template-columns:80px 1fr;gap:.8rem}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Content Knowledge Base · Project “AH”</div>
+    <h1>Ancestral<br>Healing<em>.</em></h1>
+    <p class="lede">A creator-brand content library built on one thesis: modern chronic disease is a <strong>disconnection</strong> — from ancestral food, from natural light, and from a non-toxic environment. This is the reference map of every source, claim, and production asset in the archive.</p>
+    <div class="meta">
+      <span><b>29</b> files</span>
+      <span><b>3</b> content pillars</span>
+      <span><b>23</b> written docs · <b>6</b> reference PDFs</span>
+      <span><b>Formats:</b> YouTube · Reels · Guides</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><div><h2>What this project is</h2><div class="sub">The one-paragraph orientation</div></div></div>
+    <p class="body"><strong>Ancestral Healing</strong> is a health &amp; wellness media brand that produces educational video and short-form (Reels/Shorts) content for YouTube and social platforms. The archive is a working <strong>content-production library</strong>: research notes, video scripts, distilled podcast/lecture summaries, reel hooks, downloadable guides, and a competitor map. It is not a product or codebase — it is the raw material and outlines behind a channel. The editorial worldview is <em>ancestral / animal-based / quantum-biology-adjacent</em>, blending traditional-diet advocacy with circadian-light science and a non-toxic-living angle.</p>
+
+    <div class="stats" style="margin-top:2.4rem">
+      <div class="stat"><div class="num">11</div><div class="lbl">Ancestral Nutrition assets</div></div>
+      <div class="stat"><div class="num">11</div><div class="lbl">Circadian / Light assets</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Non-Toxic Living assets</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">AI outline / idea decks</div></div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar p-nutrition"><span class="n">P1</span><div class="dot">🥩</div><h3>Ancestral Nutrition</h3><p>Nose-to-tail animal-based eating, grass-fed &amp; finished beef, organ meats, raw milk, bone broth. Anti-seed-oil, anti-processed, anti-plant-antinutrient. Sourcing from local regenerative farms.</p></div>
+      <div class="pillar p-circadian"><span class="n">P2</span><div class="dot">☀️</div><h3>Circadian &amp; Light</h3><p>Light as medicine: morning sun, blue-light avoidance, red/near-infrared therapy, grounding, EMF/5G caution, mitochondrial health. The single largest body of material.</p></div>
+      <div class="pillar p-toxin"><span class="n">P3</span><div class="dot">🌿</div><h3>Non-Toxic Living</h3><p>Microplastics, PFAS, BPA and endocrine disruptors; glass over plastic. Overlaps with hormone-health and fertility themes across the other pillars.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILE INVENTORY -->
+<section id="inventory">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><div><h2>File inventory</h2><div class="sub">Every asset, grouped by pillar and purpose</div></div></div>
+
+    <div class="group">
+      <div class="group-label"><span class="tag tag-n">Nutrition</span> Ancestral Nutrition — research, scripts &amp; guides</div>
+      <div class="files">
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Ancestral Nutrition for Lasting Health and Wellbeing<span class="fnote">Flagship manifesto: hunter-gatherer framing, anti-seed-oil, local sourcing</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Anti-Nutrient Groups and Foods to Avoid<span class="fnote">Reference: phytates, oxalates, lectins, protease inhibitors, tannins</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Benefits of Grass-fed &amp; Finished Beef<span class="fnote">Script debunking red-meat fear; CLA, omega-3, sourcing</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Benefits of Organs (Video Script)<span class="fnote">Full nose-to-tail host script with segments &amp; visual cues</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Benefits of Raw Milk<span class="fnote">Enzymes, probiotics, immunoglobulins; notes limited evidence</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Ancestral Approach to Appendicitis<span class="fnote">Post-op / anti-adhesion healing protocol (diet + red light + castor oil)</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">The Power of Regenerative Farming<span class="fnote">Soil, carbon, biodiversity + nutrient-density argument</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Gum Health in relation to Disease<span class="fnote">Oral–systemic link: inflammation, cardiovascular, Alzheimer's</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Ancestral Tips to Wake up Earlier (Short)<span class="fnote">Bridges nutrition → circadian; morning-routine reel material</span></span></div>
+        <div class="file"><span class="ext ext-pdf">PDF</span><span class="fname">Primal Nutrition — Paleolithic &amp; Ancestral Diets<span class="fnote">Reference book (external)</span></span></div>
+        <div class="file"><span class="ext ext-pdf">PDF</span><span class="fname">Carnivore Guide — Kevin Stock<span class="fnote">Reference guide (external)</span></span></div>
+        <div class="file"><span class="ext ext-pdf">PDF</span><span class="fname">Animal Based Food List<span class="fnote">Downloadable food-list guide (7.8 MB)</span></span></div>
+        <div class="file"><span class="ext ext-pdf">PDF</span><span class="fname">How to Avoid Vegetable Oils<span class="fnote">Downloadable seed-oil-avoidance guide (7 MB)</span></span></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label"><span class="tag tag-c">Circadian</span> Circadian &amp; Light — the largest body of material</div>
+      <div class="files">
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Artificial Blue Light vs Natural Sunlight<span class="fnote">Massive timestamped lecture digest (Kruse / Huberman-style)</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Benefits of Red and Infrared Light<span class="fnote">“Ultimate Light Guide” — 9 benefits, cited studies, video links</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Circadian Content Ideas<span class="fnote">Speaker profile, viral sound-bites, reel structure, 7-part mini-doc</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Circadian Daily Health Routine<span class="fnote">Hour-by-hour AM→night protocol</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Master Your Circadian<span class="fnote">14-point free checklist for circadian alignment</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Light Summary — John Ott's Work<span class="fnote">Liberman &amp; Ott; “malillumination,” full-spectrum light</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Light as Medicine<span class="fnote">Poetic manifesto: body as living photocell</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">LED Affect on Health<span class="fnote">Incandescent-ban critique; “alien sun” framing</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Reel Ideas for Circadian Health<span class="fnote">Hook / body / CTA scripted reels</span></span></div>
+      </div>
+      <div class="files" style="margin-top:.5rem">
+        <div class="file"><span class="ext ext-pdf">PDF</span><span class="fname">Impact of Circadian Rhythm on Health<span class="fnote">Reference PDF</span></span></div>
+        <div class="file"><span class="ext ext-pdf">PDF</span><span class="fname">Impact of Light on Health<span class="fnote">Reference PDF</span></span></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label"><span class="tag tag-t">Non-Toxic</span> Non-Toxic Lifestyle</div>
+      <div class="files">
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Microplastics and PFAS<span class="fnote">Study-summary sheet: placenta, thyroid, teabags, bottles</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Plastic Harmful Effects &amp; Content Ideas<span class="fnote">BPA/BPS/BPF, endocrine disruptors, glass alternative</span></span></div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label"><span class="tag tag-a">Strategy</span> AI Outlines, Ideas &amp; Channel</div>
+      <div class="files">
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Documentary Series Ideas<span class="fnote">“Evil Food Supply”-style — 4-chapter seed-oil documentary script</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">Video Ideas for Ancestral Healing<span class="fnote">Master brainstorm list of ~11 future episode concepts</span></span></div>
+        <div class="file"><span class="ext ext-doc">DOC</span><span class="fname">YouTube Channels<span class="fnote">Own channel link + 11 competitor/reference channels</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL WORLDVIEW / CLAIM LEDGER -->
+<section id="worldview">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><div><h2>The editorial worldview</h2><div class="sub">The recurring claims that unify the archive — presented as the brand's own positions</div></div></div>
+    <p class="body">These are the <strong>load-bearing beliefs</strong> the content returns to again and again. Documenting them here is descriptive: it maps what the library argues, not an endorsement of the science. Several claims (raw-milk safety, sun/cancer, EMF/5G, deuterium, "cancer is mitochondrial") are contested or go beyond mainstream consensus — the raw-milk doc itself flags this.</p>
+
+    <div class="ledger" style="margin-top:1.5rem">
+      <div class="ledger-row"><div class="k">Food is ancestral<span>NUTRITION</span></div><div class="v">Health comes from returning to what humans ate for millennia — quality animal fats, organs, seafood, seasonal produce — sourced locally from regenerative farms. Seed oils, refined sugar, grains and processed food are "the real culprits" behind chronic disease.</div></div>
+      <div class="ledger-row"><div class="k">Plants can harm<span>ANTINUTRIENTS</span></div><div class="v">Phytates, oxalates, lectins, tannins and enzyme/protease inhibitors block mineral absorption and irritate the gut lining — so many "superfoods" (kale, spinach, grains, legumes) are reframed as suboptimal.</div></div>
+      <div class="ledger-row"><div class="k">Light is a nutrient<span>CIRCADIAN</span></div><div class="v">Morning sun, full-spectrum daylight and red/near-infrared light drive mitochondrial ATP; artificial blue light causes "malillumination," disrupts melatonin/dopamine and is framed as metabolically toxic.</div></div>
+      <div class="ledger-row"><div class="k">Never miss a sunrise<span>PROTOCOL</span></div><div class="v">The single most-repeated actionable: view the rising sun with unshielded eyes within ~30 min of waking to anchor the circadian clock. "Act like the Sphinx in the morning; block blue light at night."</div></div>
+      <div class="ledger-row"><div class="k">Mitochondria are central<span>MECHANISM</span></div><div class="v">Health is framed as mitochondrial energy flux (electrons, protons, light, water, magnetism) over macronutrients. Cancer is described as "a mitochondrial disease, not genetic."</div></div>
+      <div class="ledger-row"><div class="k">Environment &gt; genes<span>DECENTRALIZED</span></div><div class="v">Grounding/earthing, cold exposure, EMF &amp; 5G avoidance, and geographic/latitude choices recur. Strong "decentralized medicine," take-personal-responsibility, distrust-the-system framing.</div></div>
+      <div class="ledger-row"><div class="k">The modern world is toxic<span>NON-TOXIC</span></div><div class="v">Microplastics, PFAS and BPA-family endocrine disruptors are tied to fertility, thyroid and hormone harm; glass and natural materials are the recommended defaults.</div></div>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">⚠ Handling note for anyone producing from this library</div>
+      <p>This archive mixes well-supported ideas (circadian rhythm matters; ultra-processed food and excess screen light are real concerns) with fringe or disputed claims (sun exposure preventing breast cancer, 5G causing cancer spikes, deuterium/"dyum" theory, DARPA/blue-light control narratives). Fact-check and add qualifiers before publishing, and keep the medical-disclaimer language the raw-milk and appendicitis docs already model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCE FIGURES -->
+<section id="figures">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><div><h2>Source figures &amp; influences</h2><div class="sub">The named thinkers the library draws from</div></div></div>
+    <div class="figs">
+      <div class="fig"><div class="role">Quantum biology · light</div><h4>Dr. Jack Kruse</h4><p>The dominant voice behind the blue-light, mitochondria, grounding, deuterium and EMF/5G material. Neurosurgeon known for "decentralized medicine."</p></div>
+      <div class="fig"><div class="role">Ancestral / animal-based</div><h4>Dr. Paul Saladino</h4><p>Cited on raw milk and the carnivore-to-animal-based approach; the appendicitis protocol is described as "Saladino-aligned."</p></div>
+      <div class="fig"><div class="role">Full-spectrum light</div><h4>John Ott &amp; Jacob Liberman</h4><p>Foundational "light medicine": Ott coined <em>malillumination</em> and pioneered full-spectrum lighting; Liberman's <em>Light: Medicine of the Future</em> is summarized in full.</p></div>
+      <div class="fig"><div class="role">Neuroscience · protocols</div><h4>Huberman Lab (referenced)</h4><p>A long alcohol-and-health digest in the blue-light doc mirrors Huberman-style timestamped protocol content (gut–liver–brain axis, hangover science).</p></div>
+      <div class="fig"><div class="role">Dental / ancestral</div><h4>Weston A. Price</h4><p>Flagged as a future episode: his tribal dental research paired with archival footage.</p></div>
+      <div class="fig"><div class="role">Style reference</div><h4>“Evil Food Supply”</h4><p>The narrative documentary style the seed-oil series is explicitly modeled on — narration over the industrialization of food.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE PROTOCOL -->
+<section id="protocol">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><div><h2>The signature daily protocol</h2><div class="sub">Distilled from “Circadian Daily Health Routine” + “Master Your Circadian”</div></div></div>
+    <div class="timeline">
+      <div class="tl"><div class="time">06:00–10:00</div><div class="what"><b>Anchor the clock</b><p>Sunrise within 10–30 min of waking, no sunglasses. Red/NIR light 10–15 min. Cold water. Gentle movement + breathwork.</p></div></div>
+      <div class="tl"><div class="time">10:00–14:00</div><div class="what"><b>Live in daylight</b><p>Work in natural light or by a window. Functional movement breaks. Mindful, screen-free meals.</p></div></div>
+      <div class="tl"><div class="time">14:00–18:00</div><div class="what"><b>Ground &amp; move</b><p>20+ min forest bathing, barefoot grounding. Restorative strength work. Emotional/"conflict" journaling.</p></div></div>
+      <div class="tl"><div class="time">18:00–21:00</div><div class="what"><b>Signal dusk</b><p>Sunset gazing or red light. Dim the home to candles/amber. Light meal. Unwind to release stress.</p></div></div>
+      <div class="tl"><div class="time">21:00–06:00</div><div class="what"><b>Full darkness</b><p>Blackout sleep, EMF/Wi-Fi off, blue-light blockers after dark. Visualization to close the day.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTION ASSETS -->
+<section id="production">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><div><h2>Content production assets</h2><div class="sub">What's ready to shoot, and the brand voice to shoot it in</div></div></div>
+    <div class="prod">
+      <div class="prod-col">
+        <h3>🎬 Ready-made scripts &amp; series</h3>
+        <ul class="clean">
+          <li><b>Rise of Seed Oils</b> — a 4-chapter narrated documentary script (intro → industrial revolution → ancestral return → "Fearing Red Meat").</li>
+          <li><b>Benefits of Organs</b> — a complete 9-segment host script with visual direction.</li>
+          <li><b>“Sunlight Runs Your Body”</b> — a 7-part circadian mini-doc outline.</li>
+          <li><b>The Ultimate Light Guide</b> — a lead-magnet guide (9 benefits + cited studies + curated video links).</li>
+          <li><b>Scripted Reels</b> — hook/body/CTA formatted shorts for morning light &amp; blue light.</li>
+        </ul>
+      </div>
+      <div class="prod-col">
+        <h3>💡 Future episode backlog</h3>
+        <ul class="clean">
+          <li>Weston A. Price dental research + tribal footage</li>
+          <li>Soy: health &amp; environmental harm</li>
+          <li>Plastics in placentas / PFAS / hormone disruption</li>
+          <li>"Super <em>Not</em> Foods" — debunking kale, juicing, grains</li>
+          <li>Glyphosate &amp; Monsanto lawsuits</li>
+          <li>Organs &amp; bone marrow as "medicine"</li>
+          <li>Fake spirituality &amp; ethical indigenous sourcing</li>
+          <li>EMF / AirPods / Wi-Fi &amp; kids' screen time</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="label">Brand voice · from “Circadian Content Ideas”</div>
+      <blockquote>“Bold, provocative, confident, disruptively educational — rebel scientist meets renegade neurosurgeon, bringing physics &amp; quantum into biology.”</blockquote>
+      <p class="body" style="margin:0;font-size:.85rem">Hooks are punchy and contrarian ("They lied to you about cataracts"; "Your retina is a quantum computer"). CTAs push sharing and challenge the viewer's assumptions. Visual grammar: sunrise/mitochondria/eye-cross-section b-roll, bold captions, EMF-buzz SFX, cinematic rising tones on the "mind-blow" beat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNEL & COMPETITIVE -->
+<section id="channel">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span><div><h2>Channel &amp; competitive map</h2><div class="sub">From “YouTube Channels.docx”</div></div></div>
+    <p class="body"><strong>Own channel:</strong> Ancestral Healing (YouTube). The file also tracks <strong>11 reference/competitor channels</strong> in the ancestral-health, non-toxic-living and circadian/light niches — including named creators such as <em>Non Toxic Dad</em>, <em>Tim Burmaster</em>, <em>Nutrition with Judy</em>, <em>Joey Sorts</em>, and <em>The Signal with Jonathan Jarecki</em> — used for positioning and content benchmarking.</p>
+    <div class="callout" style="border-left-color:var(--sage)">
+      <div class="ttl" style="color:var(--sage)">Where to take it next</div>
+      <p>The archive is rich in <em>research</em> but light on <em>packaging</em>. High-leverage next steps: (1) turn the three "guide" PDFs into a consistent lead-magnet series; (2) build a reels content calendar from the Circadian sound-bite bank; (3) add a citations/fact-check layer before the disputed claims go to video; (4) unify the visual identity across nutrition, light and non-toxic pillars.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="disc">This knowledge base is a neutral map of the "AH" content archive. It documents the claims the library makes without verifying them. Much of the material is educational opinion content, not medical advice — several health claims within are contested or unproven and should be fact-checked and qualified before publication.</p>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.15em;color:var(--amber)">ANCESTRAL HEALING · KNOWLEDGE BASE · GENERATED FROM 29 SOURCE FILES</div>
+</footer>
+
+</body>
+</html>

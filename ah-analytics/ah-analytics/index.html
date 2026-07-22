@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancestral Healing — Channel Analytics</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{
+  --night:#1a1410; --earth:#241c15; --earth2:#2e241a;
+  --bone:#efe6d6; --bone-dim:#b7ab97;
+  --amber:#e8a942; --ember:#d5622e; --sage:#8fa07a; --sky:#6f93a8;
+  --red:#c2553f;
+  --line:rgba(239,230,214,.13); --line-strong:rgba(239,230,214,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--bone);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--amber);color:var(--night)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1.25rem,5vw,4rem)}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3rem);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;left:50%;bottom:-50%;transform:translateX(-50%);width:min(120vw,860px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(232,169,66,.26) 0%,rgba(213,98,46,.14) 36%,rgba(213,98,46,0) 64%);pointer-events:none}
+.hero .wrap{position:relative}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.2rem,6.5vw,4rem);line-height:1;letter-spacing:-.02em;margin-bottom:.9rem}
+h1 em{font-style:italic;font-weight:400;color:var(--amber)}
+.lede{color:var(--bone-dim);max-width:58ch;font-size:clamp(1rem,2vw,1.15rem)}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.4rem}
+.kpi{background:var(--earth);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem}
+.kpi .n{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1;color:var(--amber)}
+.kpi .l{font-size:.76rem;color:var(--bone-dim);margin-top:.45rem;line-height:1.3}
+
+section{padding:clamp(2.5rem,5vw,4rem) 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.8rem}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--amber);padding-top:.35rem}
+h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.05;letter-spacing:-.015em}
+.sub{color:var(--bone-dim);font-size:.92rem;margin-top:.3rem}
+p.body{color:var(--bone-dim);max-width:70ch;margin-bottom:1rem}
+p.body strong{color:var(--bone);font-weight:600}
+
+/* ALERT */
+.alert{background:linear-gradient(135deg,rgba(194,85,63,.14),rgba(213,98,46,.06));border:1px solid rgba(194,85,63,.45);border-left:3px solid var(--red);border-radius:12px;padding:1.5rem 1.7rem;margin:1.5rem 0}
+.alert .t{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem}
+.alert h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin-bottom:.7rem;line-height:1.25}
+.alert p{color:var(--bone-dim);font-size:.93rem;max-width:72ch}
+.alert p+p{margin-top:.7rem}
+
+/* VERSUS */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;align-items:center;margin:1.6rem 0}
+.vs-card{background:var(--earth);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem;text-align:center}
+.vs-card.win{border-color:rgba(143,160,122,.5)}
+.vs-card.lose{border-color:rgba(194,85,63,.42)}
+.vs-card .lab{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:.6rem}
+.vs-card .big{font-family:'Fraunces',serif;font-weight:900;font-size:2.3rem;line-height:1}
+.win .big{color:var(--sage)} .lose .big{color:var(--red)}
+.vs-card .sm{font-size:.8rem;color:var(--bone-dim);margin-top:.45rem}
+.vs-mid{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--amber);text-align:center;white-space:nowrap}
+
+/* BARS */
+.bars{display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem}
+.bar-row{display:grid;grid-template-columns:130px 1fr 82px;gap:.9rem;align-items:center}
+.bar-row .name{font-size:.87rem;color:var(--bone)}
+.bar-track{background:rgba(239,230,214,.07);border-radius:5px;height:24px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--ember),var(--amber));display:flex;align-items:center;padding-left:.6rem}
+.bar-fill.weak{background:linear-gradient(90deg,#6b3a30,#8d5342)}
+.bar-fill.mid{background:linear-gradient(90deg,#8d6a35,#b98f42)}
+.bar-fill span{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--night);font-weight:500}
+.bar-row .val{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--bone-dim);text-align:right}
+.baseline{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--bone-dim);margin-top:.9rem;padding-left:139px}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.6rem}
+th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);padding:.6rem .8rem;border-bottom:1px solid var(--line-strong);font-weight:500}
+td{padding:.65rem .8rem;border-bottom:1px solid var(--line);color:var(--bone-dim)}
+td.hi{color:var(--bone);font-weight:500}
+tr:hover td{background:rgba(239,230,214,.03)}
+td.rank{font-family:'IBM Plex Mono',monospace;color:var(--amber);width:32px}
+.ratio{font-family:'IBM Plex Mono',monospace;font-weight:500}
+.ratio.up{color:var(--sage)} .ratio.down{color:var(--red)}
+
+/* LESSON */
+.lesson{background:var(--earth2);border:1px solid var(--line-strong);border-radius:14px;padding:1.6rem 1.8rem;margin-top:1.4rem}
+.lesson .t{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.comp{padding:1rem 1.1rem;border-radius:9px;background:rgba(239,230,214,.04);border:1px solid var(--line)}
+.comp .ttl{font-size:.87rem;color:var(--bone);margin-bottom:.5rem;line-height:1.35}
+.comp .v{font-family:'Fraunces',serif;font-weight:900;font-size:1.7rem}
+.comp.a .v{color:var(--red)} .comp.b .v{color:var(--sage)}
+
+/* PRIORITY */
+.prio{display:flex;flex-direction:column;gap:.55rem}
+.p-item{display:grid;grid-template-columns:34px 1fr auto;gap:1rem;align-items:center;background:var(--earth);border:1px solid var(--line);border-radius:10px;padding:.85rem 1.1rem}
+.p-item .num{font-family:'Fraunces',serif;font-weight:900;font-size:1.15rem;color:var(--amber)}
+.p-item .txt{font-size:.9rem;color:var(--bone)}
+.p-item .txt small{display:block;color:var(--bone-dim);font-size:.78rem;margin-top:.15rem}
+.pill{font-family:'IBM Plex Mono',monospace;font-size:.65rem;padding:.25rem .6rem;border-radius:20px;white-space:nowrap}
+.pill.high{background:rgba(143,160,122,.2);color:var(--sage)}
+.pill.med{background:rgba(232,169,66,.18);color:var(--amber)}
+
+.note{background:rgba(111,147,168,.08);border:1px solid rgba(111,147,168,.3);border-left:3px solid var(--sky);border-radius:9px;padding:1.1rem 1.3rem;margin-top:1.4rem}
+.note .t{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:.5rem}
+.note p{font-size:.87rem;color:var(--bone-dim);max-width:72ch}
+.note ul{margin:.5rem 0 0 1.1rem;font-size:.85rem;color:var(--bone-dim)}
+.note li{margin-bottom:.3rem}
+
+footer{padding:2.5rem 0 3rem;text-align:center;color:var(--bone-dim);font-size:.78rem}
+
+@media(max-width:800px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .vs{grid-template-columns:1fr}
+  .vs-mid{padding:.4rem 0}
+  .compare{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:96px 1fr 62px;gap:.55rem}
+  .baseline{padding-left:0}
+  table{font-size:.8rem}
+  td,th{padding:.5rem .45rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">TubeLab · Pulled 22 July 2026</div>
+    <h1>Channel<br>Analytics<em>.</em></h1>
+    <p class="lede">Ancestral Healing · <strong>@ancestralhealing</strong> — 120 long-form videos and 42 shorts analysed against the AH Brain content archive.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="n">29.6K</div><div class="l">Subscribers</div></div>
+      <div class="kpi"><div class="n">208</div><div class="l">Videos published</div></div>
+      <div class="kpi"><div class="n">5,300</div><div class="l">Median views</div></div>
+      <div class="kpi"><div class="n">12</div><div class="l">Positive outliers</div></div>
+      <div class="kpi"><div class="n">0</div><div class="l">Negative outliers</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><div><h2>The headline finding</h2><div class="sub">Where the archive points vs where the audience is</div></div></div>
+
+    <div class="alert">
+      <div class="t">⚠ Strategic mismatch</div>
+      <h3>The biggest research pillar maps to the worst-performing topic.</h3>
+      <p><strong>Carnivore and animal-based content returns 1.25× the channel average</strong> and holds 7 of the 12 outliers — despite being only a third of the catalogue.</p>
+      <p><strong>Circadian and light returns 0.52× in long-form and 0.41× in shorts</strong> — the weakest category on the channel. Yet it is the largest pillar in AH Brain, with 11 of 29 documents.</p>
+      <p>This doesn't mean the circadian research is wasted. It means it has been published as <em>abstract explainers</em>, and that format fails here regardless of topic. Section 04 shows the fix.</p>
+    </div>
+
+    <div class="vs">
+      <div class="vs-card win">
+        <div class="lab">"Carnivore" in title</div>
+        <div class="big">9,200</div>
+        <div class="sm">median views · 37 videos</div>
+      </div>
+      <div class="vs-mid">2.5× gap</div>
+      <div class="vs-card lose">
+        <div class="lab">Everything else</div>
+        <div class="big">3,700</div>
+        <div class="sm">median views · 83 videos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><div><h2>What performs</h2><div class="sub">Median views-to-average ratio by topic, long-form</div></div></div>
+    <div class="bars">
+      <div class="bar-row"><span class="name">Carnivore</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span>1.25×</span></div></div><span class="val">9,200</span></div>
+      <div class="bar-row"><span class="name">Nutrition</span><div class="bar-track"><div class="bar-fill mid" style="width:55%"><span>0.69×</span></div></div><span class="val">5,050</span></div>
+      <div class="bar-row"><span class="name">Recipes</span><div class="bar-track"><div class="bar-fill mid" style="width:42%"><span>0.53×</span></div></div><span class="val">3,900</span></div>
+      <div class="bar-row"><span class="name">Circadian</span><div class="bar-track"><div class="bar-fill weak" style="width:42%"><span>0.52×</span></div></div><span class="val">3,800</span></div>
+      <div class="bar-row"><span class="name">Health</span><div class="bar-track"><div class="bar-fill weak" style="width:40%"><span>0.50×</span></div></div><span class="val">3,700</span></div>
+      <div class="bar-row"><span class="name">Lifestyle</span><div class="bar-track"><div class="bar-fill weak" style="width:27%"><span>0.34×</span></div></div><span class="val">2,500</span></div>
+      <div class="bar-row"><span class="name">Toxins</span><div class="bar-track"><div class="bar-fill weak" style="width:27%"><span>0.34×</span></div></div><span class="val">2,500</span></div>
+    </div>
+    <div class="baseline">Bar width relative to top performer · channel average = 7,363 views</div>
+
+    <p class="body" style="margin-top:2rem"><strong>Duration matters more than expected.</strong> The 20+ minute bucket returns 1.70× — the best of any length — and there are only 8 such videos in 120. The top video is 28 minutes; the runner-up is 23.</p>
+
+    <div class="bars">
+      <div class="bar-row"><span class="name">Under 5 min</span><div class="bar-track"><div class="bar-fill weak" style="width:19%"><span>0.33×</span></div></div><span class="val">2,400</span></div>
+      <div class="bar-row"><span class="name">5–8 min</span><div class="bar-track"><div class="bar-fill mid" style="width:47%"><span>0.80×</span></div></div><span class="val">5,900</span></div>
+      <div class="bar-row"><span class="name">8–12 min</span><div class="bar-track"><div class="bar-fill mid" style="width:36%"><span>0.62×</span></div></div><span class="val">4,600</span></div>
+      <div class="bar-row"><span class="name">12–20 min</span><div class="bar-track"><div class="bar-fill mid" style="width:51%"><span>0.87×</span></div></div><span class="val">6,400</span></div>
+      <div class="bar-row"><span class="name">20+ min</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span>1.70×</span></div></div><span class="val">12,500</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><div><h2>The outliers</h2><div class="sub">Twelve videos statistically above the channel's normal range</div></div></div>
+    <table>
+      <thead><tr><th></th><th>Title</th><th>Views</th><th>Ratio</th><th>Length</th></tr></thead>
+      <tbody>
+        <tr><td class="rank">1</td><td class="hi">CARNIVORE DIET: 5 Things That No One Talks About</td><td>71,000</td><td class="ratio up">9.64×</td><td>28 min</td></tr>
+        <tr><td class="rank">2</td><td class="hi">I Eat Burgers with EVERY Meal</td><td>56,000</td><td class="ratio up">7.61×</td><td>23 min</td></tr>
+        <tr><td class="rank">3</td><td class="hi">5 REASONS WHY CARNIVORE MAY NOT BE WORKING</td><td>29,000</td><td class="ratio up">3.94×</td><td>11 min</td></tr>
+        <tr><td class="rank">4</td><td class="hi">Carnivore Tortillas — Zero Carb Tortillas</td><td>25,000</td><td class="ratio up">3.40×</td><td>14 min</td></tr>
+        <tr><td class="rank">5</td><td class="hi">1 Minute Microwave Cheesecake Recipe</td><td>23,000</td><td class="ratio up">3.12×</td><td>11 min</td></tr>
+        <tr><td class="rank">6</td><td class="hi">WHAT I EAT IN A WEEK · BUDGET · ANIMAL BASED</td><td>19,000</td><td class="ratio up">2.58×</td><td>11 min</td></tr>
+        <tr><td class="rank">7</td><td class="hi">I Quit Sugar For An Entire 3 Years</td><td>19,000</td><td class="ratio up">2.58×</td><td>26 min</td></tr>
+        <tr><td class="rank">8</td><td class="hi">First Month on Carnivore Diet · WHAT TO EXPECT</td><td>18,000</td><td class="ratio up">2.44×</td><td>13 min</td></tr>
+        <tr><td class="rank">9</td><td class="hi">Eating Dairy on Carnivore · THE TRUTH ABOUT DAIRY</td><td>17,000</td><td class="ratio up">2.31×</td><td>9 min</td></tr>
+        <tr><td class="rank">10</td><td class="hi">Healing AUTOIMMUNE · Psoriasis and Eczema</td><td>17,000</td><td class="ratio up">2.31×</td><td>9 min</td></tr>
+        <tr><td class="rank">11</td><td class="hi">Benefits of QUITTING COFFEE!</td><td>16,000</td><td class="ratio up">2.17×</td><td>13 min</td></tr>
+        <tr><td class="rank">12</td><td class="hi">9 WAYS TO ADD MORE FAT ON AN ANIMAL BASED DIET</td><td>15,000</td><td class="ratio up">2.04×</td><td>8 min</td></tr>
+      </tbody>
+    </table>
+
+    <p class="body" style="margin-top:1.6rem"><strong>The pattern is consistent:</strong> carnivore framing, long runtime, lived personal experience, and — most tellingly — <strong>honesty about difficulty</strong>. The #1 and #3 videos are both about what goes <em>wrong</em>. Content that admits limitations outperforms content that only advocates.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><div><h2>The cleanest lesson</h2><div class="sub">Two videos, same structure, 13× apart</div></div></div>
+
+    <div class="lesson">
+      <div class="t">Abstract vs actionable</div>
+      <div class="compare">
+        <div class="comp a">
+          <div class="ttl">"9 Ways To Connect With Your Ancestors Through Food"</div>
+          <div class="v">1,100</div>
+        </div>
+        <div class="comp b">
+          <div class="ttl">"9 WAYS TO ADD MORE FAT ON AN ANIMAL BASED DIET"</div>
+          <div class="v">15,000</div>
+        </div>
+      </div>
+      <p class="body" style="margin:0">Identical construction. Same number. The only variable is whether the promise is philosophical or practical. This single comparison explains most of the channel's spread — and it is exactly why the circadian material, published as explainers, has underperformed.</p>
+    </div>
+
+    <p class="body" style="margin-top:2rem"><strong>How to bridge circadian into this audience</strong> — keep the topic, change the door:</p>
+    <table>
+      <thead><tr><th>Published (underperformed)</th><th>Bridged framing</th></tr></thead>
+      <tbody>
+        <tr><td>"Circadian Rhythm" — 1,300</td><td class="hi">"I Watched The Sunrise Every Day For 30 Days"</td></tr>
+        <tr><td>"Grounding Health Benefits" — 1,200</td><td class="hi">"The Free Thing That Fixed My Sleep On Carnivore"</td></tr>
+        <tr><td>"Shift Work &amp; Circadian Rhythm" — 1,400</td><td class="hi">"Why Carnivore Stopped Working — It Wasn't The Food"</td></tr>
+        <tr><td>"Master Your Circadian"</td><td class="hi">"5 Things No One Tells You About Light And Energy"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><div><h2>Do this next</h2><div class="sub">Ordered by expected impact</div></div></div>
+    <div class="prio">
+      <div class="p-item"><span class="num">1</span><span class="txt">Confirm publishing status<small>TubeLab's latest publish estimate is mid-2023 — verify in Studio before anything else</small></span><span class="pill high">Critical</span></div>
+      <div class="p-item"><span class="num">2</span><span class="txt">Produce the seed-oil documentary at 20+ minutes<small>Longest bucket returns 1.70×; the script already exists in AH Brain</small></span><span class="pill high">High</span></div>
+      <div class="p-item"><span class="num">3</span><span class="txt">Reframe circadian around personal experience<small>Keep the research, drop the explainer format</small></span><span class="pill high">High</span></div>
+      <div class="p-item"><span class="num">4</span><span class="txt">Build the raw milk / dairy video<small>"THE TRUTH ABOUT DAIRY" hit 2.31× and the research doc is unused</small></span><span class="pill high">High</span></div>
+      <div class="p-item"><span class="num">5</span><span class="txt">Convert question and ALL-CAPS titles<small>Questions return 0.42× with zero outliers; caps return 0.56×</small></span><span class="pill med">Quick win</span></div>
+      <div class="p-item"><span class="num">6</span><span class="txt">Start a "what I got wrong" series<small>The two biggest videos are both about problems, not benefits</small></span><span class="pill med">Medium</span></div>
+    </div>
+
+    <div class="note">
+      <div class="t">What this analysis cannot see</div>
+      <p>TubeLab reads public metrics only. Missing: <strong>retention, click-through rate, traffic source, and subscriber conversion</strong> — the numbers that explain <em>why</em> something worked.</p>
+      <ul>
+        <li>View counts are rounded estimates — directionally reliable, not exact</li>
+        <li>Publish dates are coarse and bucket to single days; don't use them for trends</li>
+        <li>Sample covers 120 of 208 videos (58%)</li>
+        <li>Circadian long-form has only 2 data points — that verdict is provisional</li>
+        <li>Competitive channel data unavailable (TubeLab credit balance is 0)</li>
+      </ul>
+      <p style="margin-top:.7rem">Export YouTube Studio → Analytics → Advanced Mode and this sharpens considerably.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.15em;color:var(--amber)">ANCESTRAL HEALING · CHANNEL ANALYTICS · TUBELAB · 22 JULY 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
